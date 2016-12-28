@@ -1,0 +1,45 @@
+{
+    "!name": "onesignal-cordova-plugin-pgb-compat",
+    "!define": {
+        "!modules": {
+            "OneSignal": {
+                "prototype": {
+                    "OSInFocusDisplayOption": {
+                        "None": "number",
+                        "InAppAlert": "number",
+                        "Notification": "number"
+                    },
+                    "startInit": "fn(appId: ?, googleProjectNumber: ?) -> !this",
+                    "handleNotificationReceived": "fn(handleNotificationReceivedCallback: ?) -> !this",
+                    "handleNotificationOpened": "fn(handleNotificationOpenedCallback: ?) -> !this",
+                    "inFocusDisplaying": "fn(display: ?) -> !this",
+                    "iOSSettings": "fn(settings: ?) -> !this",
+                    "endInit": "fn()",
+                    "getTags": "fn(tagsReceivedCallBack: ?)",
+                    "getIds": "fn(IdsReceivedCallBack: ?)",
+                    "sendTag": "fn(key: ?, value: ?)",
+                    "sendTags": "fn(tags: ?)",
+                    "deleteTag": "fn(key: ?)",
+                    "deleteTags": "fn(keys: ?)",
+                    "registerForPushNotifications": "fn()",
+                    "enableVibrate": "fn(enable: ?)",
+                    "enableSound": "fn(enable: ?)",
+                    "enableNotificationsWhenActive": "fn(enable: ?)",
+                    "setSubscription": "fn(enable: ?)",
+                    "postNotification": "fn(jsonData: ?, onSuccess: fn(), onFailure: fn())",
+                    "promptLocation": "fn()",
+                    "syncHashedEmail": "fn(email: ?)",
+                    "setLogLevel": "fn(logLevel: ?)"
+                },
+                "_displayOption": "number",
+                "!type": "fn()"
+            }
+        },
+        "!modules.OneSignal.prototype.startInit.!ret": "+!modules.OneSignal",
+        "!modules.OneSignal.prototype.postNotification.!1": "fn()",
+        "!modules.OneSignal.prototype.postNotification.!2": "fn()"
+    },
+    "!plugin-version": "2.0.10",
+    "jsonKeyValue": {},
+    "OneSignal": "!modules.OneSignal"
+}

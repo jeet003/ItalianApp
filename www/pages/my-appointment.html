@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Italian App</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/animate.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/swiper.min.css">
+    <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    
+<style type="text/css">
+
+body{
+background: #ffffff;
+}
+.nav>li>a:focus, .nav>li>a:hover {
+    text-decoration: none;
+    background: none;
+}
+
+.theme-config {
+    position: absolute;
+    top: 0px;
+    overflow: hidden;
+        left: 0;
+}
+
+.skin-setttings {
+    width: 220px;
+    margin-left: 0px;
+    background: #2f4050;
+}
+.img_css{
+width: 38px;
+    height: 38px;
+}
+.cursor_pointer{
+cursor: pointer;
+}
+.mg_top_20{
+margin-top: 20px;
+}
+
+.display_none{
+display: none;
+}
+
+.min_height_50{
+    min-height: 50px;
+}
+
+.mg_left_10{
+margin-left: 10px;
+}
+
+.label-green{
+    border: 1px solid #75e1a6;
+    color: #fff;
+    background: #50d38a;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 1px;
+}
+
+.label-red{
+    border: 1px solid red;;
+    color: #fff;
+    background: red;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 1px;
+}
+.test-bold{
+font-weight: bold;
+}
+
+.page_header_icon {
+    font-size: 20px;
+    color: #FFFFFF;
+    margin: 15px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+#header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  min-height: 10%;
+  background: #6f2a5c;
+}
+
+.ibox-content {
+    background-color: #ffffff;
+    color: inherit;
+    padding: 0px 4px 0px 5px;
+    border-color: #e7eaec;
+    border-image: none;
+    border-style: solid solid none;
+    border-width: 1px 0;
+}
+
+.ibox-title {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #ffffff;
+    border-color: #e7eaec;
+    border-image: none;
+    border-style: solid solid none;
+    border-width: 3px 0 0;
+    color: inherit;
+    margin-bottom: 0;
+    padding: 5px 12px 2px;
+    min-height: 35px;
+}
+</style>
+</head>
+
+<body>
+
+    <div class="container">
+    	<div class="row">
+    <div class="theme-config" >
+    <div class="theme-config-box show">
+        <div class="skin-setttings" id="menu-details" style="display:none;position: fixed;height: 100%;">
+        
+        
+        <div style="width: 100%;">
+        <img alt="image" class="img-circle my-profile-image" src="../img/profile.png" style="width: 120px;margin-left: 50px;margin-top: 15px;">
+        <span class="clear" style="color: #fff;margin-left: 65px;font-size: 15px;"> <span class="block m-t-xs"> <strong class="font-bold client_name"></strong>
+        </div>
+        	
+		<ul class="nav metismenu" style="margin-top: 25px;">
+                <li >
+                    <a class="nav_menu" id="my-account" style="font-size: 15px;font-weight: bold;"><i style="color: #319c8e;" class="fa fa-user"></i> <span class="nav-label">MY ACCOUNT</span> <span class="fa fa-angle-right pull-right"></span></a>
+                </li>
+                <li>
+                    <a class="nav_menu" id="shop-connected" style="font-size: 15px;font-weight: bold;"><i style="color: #319c8e;" class="fa fa-connectdevelop"></i> <span class="nav-label">SHOP CONNECTED</span><span class="fa fa-angle-right pull-right"></span></a>
+                </li>
+                <li>
+                    <a class="nav_menu" id="barCode" style="font-size: 15px;font-weight: bold;"><i style="color: #319c8e;"  class="fa fa-barcode "></i> <span class="nav-label">BARCODE</span><span class="fa fa-angle-right pull-right"></span></a>
+                </li>
+                <li>
+                    <a class="nav_menu" id="my-appointment" style="font-size: 15px;font-weight: bold;"><i style="color: #319c8e;" class="fa fa-book"></i> <span class="nav-label">APPOINMENTS</span> <span class="badge label label-info appointment_count"></span><span class="fa fa-angle-right pull-right"></span></a>
+                </li>
+                <li>
+                    <a class="nav_menu" url="../index.html" style="font-size: 15px;font-weight: bold;"><i style="color: #319c8e;" class="fa fa-sign-out"></i> <span class="nav-label">Logout</span></a>
+                </li>
+
+            </ul>        
+            </div>
+        </div>
+	</div>
+
+<div id="header">
+ <i class="fa fa-list page_header_icon" id="mymenu"></i>
+ <a class="fa fa-plus-circle nav_menu pull-right barcode-menu page_header_icon"></a>
+</div>
+	
+<div style="margin-top: 15%;">	
+	<div class="col-lg-12 no_app" style="color: red;margin-top: 80px;font-size: 20px;display: none;">
+	No appointment available
+	</div>
+							
+	<div class="col-lg-12 day_1 appointment_days" style="margin-top: 35px;">
+		<div class="row">
+			<div class="ibox-title" style="background: #6f2a5c;color: #fff;font-size: 15px;">
+				Today
+			</div>
+			<div class="appoinement_details"></div>
+		</div>
+	</div>
+	<div class="col-lg-12 day_2 appointment_days">
+		<div class="row">
+			<div class="ibox-title" style="background: #6f2a5c;color: #fff;font-size: 15px;">
+				Tomorrow
+			</div>
+			<div class="appoinement_details"></div>
+		</div>
+	</div>
+	<div class="col-lg-12 day_3 appointment_days">
+		<div class="row">
+			<div class="ibox-title" style="background: #6f2a5c;color: #fff;font-size: 15px;">
+				<span class="day_no"></span>
+			</div>
+			<div class="appoinement_details"></div>
+		</div>
+	</div>
+	<div class="col-lg-12 day_4 appointment_days">
+		<div class="row">
+			<div class="ibox-title" style="background: #6f2a5c;color: #fff;font-size: 15px;">
+				<span class="day_no"></span>
+			</div>
+			<div class="appoinement_details"></div>
+		</div>
+	</div>
+	<div class="col-lg-12 day_5 appointment_days">
+		<div class="row">
+			<div class="ibox-title" style="background: #6f2a5c;color: #fff;font-size: 15px;">
+				<span class="day_no"></span>
+			</div>
+			<div class="appoinement_details"></div>
+		</div>
+	</div>
+	<div class="col-lg-12 day_6 appointment_days">
+		<div class="row">
+			<div class="ibox-title" style="background: #6f2a5c;color: #fff;font-size: 15px;">
+				<span class="day_no"></span>
+			</div>
+			<div class="appoinement_details"></div>
+		</div>
+	</div>
+	<div class="col-lg-12 day_7 appointment_days">
+		<div class="row">
+			<div class="ibox-title" style="background: #6f2a5c;color: #fff;font-size: 15px;">
+				<span class="day_no"></span>
+			</div>
+			<div class="appoinement_details"></div>
+		</div>
+	</div>
+	
+</div>
+</div>
+</div>
+	
+<script src="cordova.js" id="xdkJScordova_"></script>
+<script type="text/javascript" src="../js/jquery-1.12.3.js"></script>
+<script src="../js/app_1.js"></script>
+<script src="../js/swiper.min.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script src="../js/jquery.mobile-1.4.5.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+
+function myappointmentDetails(){
+	
+	var client_id = getQueryParam('client_id');
+	var formData = new FormData();
+	
+	formData.append("user_id",client_id);
+	
+	var seven_days = [];
+	
+	for( var i = 0 ; i<7 ; i ++){
+		
+		var todaysDate = new Date();
+		todaysDate.setDate(todaysDate.getDate() + i );
+		
+	    var formatDate = todaysDate.getFullYear() + '-' + ( '0' + (todaysDate.getMonth() + 1)).slice(-2) + '-' + ( '0' + todaysDate.getDate() ).slice(-2) ;
+	    
+		seven_days.push( formatDate );
+	}
+	
+    $.ajax({
+  		url: 'http://www.dappoint.com/shopapp/php/my-appointment-app.php',
+  		type: 'POST',
+  		data: formData,
+  		async: false,
+  		success: function(data) {
+			
+  			var finaldata = JSON.parse(data);
+  			
+  			if( finaldata.OPERATION == 0){
+  				
+  				var searchData = finaldata.SEARCH_RESULT;
+  				
+  				var appointment_count = 0;
+  				
+  				$.each( searchData , function( index, value ){
+  					
+  					var confirmed_appointment_clone = $('.confirmed_appointment_clone').clone();
+  					$( confirmed_appointment_clone ).removeClass('confirmed_appointment_clone');
+  					
+  					var user_apnt_time = value.user_apnt_time;
+  					
+  					var times = user_apnt_time.split(':');
+  					
+  					$( confirmed_appointment_clone ).find('.appointment_time').html( times[0] + ':' + times[1] );
+  					
+  					if( value.user_apnt_status == 'DELETED'){
+  						confirmed_appointment_clone = $('.cancel_appointment_clone').clone();
+  						$( confirmed_appointment_clone ).removeClass('cancel_appointment_clone');
+  						
+  						var updated_date = value.update_date;
+  						var up_times = updated_date.split(' ');
+  						
+  						var time = up_times[1].split(':');
+  						var date = up_times[0].split('-');
+  						
+  						$( confirmed_appointment_clone ).find('.appointment_time').html( date[2] + '-' + date[1] + '-' + date[0] + ' ' +  time[0] + ':' + time[1]);
+  					}
+  					
+  					var relativeUrl = null;
+  					
+  					if( ! jQuery.isEmptyObject( value.shop_img_url )){
+  		                var start_index = value.shop_img_url.indexOf('upload');
+  		                var end_index = value.shop_img_url.length;
+  		                relativeUrl = value.shop_img_url.substring(start_index,end_index);
+  					}
+
+	                if( ! jQuery.isEmptyObject( relativeUrl ) ){
+	                	$( confirmed_appointment_clone ).find('.profile_img').attr("src" , "http://www.dappoint.com/shopapp/" + relativeUrl );
+	                }
+  					
+  					$( confirmed_appointment_clone ).find('.shop_name').html( value.shop_name1 );
+  					$( confirmed_appointment_clone ).find('.shop_desc').html( value.shop_desc );
+  					$( confirmed_appointment_clone ).find('.doctor_name').html( value.first_line_activity);
+  					$( confirmed_appointment_clone ).find('.appoinment').attr( 'appointment_id' , value.Appointment_ID );
+  					
+  					if( value.user_apnt_status != 'DELETED'){
+
+  						$( confirmed_appointment_clone ).find('.delete_app').attr('user_id' , value.user_id );
+  						$( confirmed_appointment_clone ).find('.delete_app').attr('shop_id' , value.shop_id );
+  						$( confirmed_appointment_clone ).find('.delete_app').attr('appointment_id' , value.Appointment_ID );
+
+  						$( confirmed_appointment_clone ).find('.postpone_app').attr('user_id' , value.user_id );
+  						$( confirmed_appointment_clone ).find('.postpone_app').attr('shop_id' , value.shop_id );
+  						$( confirmed_appointment_clone ).find('.postpone_app').attr('appointment_id' , value.Appointment_ID );
+  	  					
+  						$( confirmed_appointment_clone ).find('.confirm_app').attr('user_id' , value.user_id );
+  	  					$( confirmed_appointment_clone ).find('.confirm_app').attr('shop_id' , value.shop_id );
+  	  					$( confirmed_appointment_clone ).find('.confirm_app').attr('appointment_id' , value.Appointment_ID );
+
+  					}
+  					
+  					$( confirmed_appointment_clone ).removeClass('display_none');
+  					
+  					var user_apnt_dt = value.user_apnt_dt;
+  					
+  					var dayNo = getDayNo( seven_days , user_apnt_dt );
+
+  					if( dayNo > 2 ){
+  						$('.day_'+ dayNo ).find('.day_no').html( user_apnt_dt );
+  					}
+  					
+  					$('.day_'+ dayNo ).find('.appoinement_details').append( confirmed_appointment_clone );
+  					
+  					appointment_count ++;
+  	  			});
+  				
+  				$('.appointment_count').html( appointment_count );
+  			}
+  },
+  cache: false,
+  contentType: false,
+  processData: false
+});
+    
+	var appointment_days = $('.appointment_days');
+    
+    $.each( appointment_days , function(index , value ){
+			
+    	var dataLength = $( value ).find('.appoinement_details').children().length;
+    	
+    	if( dataLength == 0 ){
+    		$( value ).remove();
+    	}
+    });
+    
+    appointment_days = $('.appointment_days');
+    
+    if( appointment_days.length == 0 ){
+    	$('.no_app').show();
+    }
+}
+
+function getDayNo( seven_days , user_apnt_dt  ){
+	
+	var dayNo = null;
+	
+	$.each( seven_days , function( i , v ){
+		
+		if( user_apnt_dt == v ){
+			dayNo = i + 1;
+		}
+	});
+	
+	return dayNo;
+}
+
+$(document).ready(function(){
+	
+	loadAppointmentDetails();
+	
+	myappointmentDetails();
+	
+	$(this).on( 'click' , '.appoinment' , function(){
+		
+		var appointment_id = $(this).attr('appointment_id');
+		var user_id = getQueryParam('client_id');
+		document.location = 'appointment-details.html?appointment_id='+appointment_id+'&client_id='+user_id;
+	});
+	
+	var swiper = new Swiper('.swiper-container', {
+        loop: true
+    });
+
+	$(this).on( 'click' , '.confirm_app' , function(){
+
+		var appointment_id = $(this).attr('appointment_id');
+		var user_id = $(this).attr('user_id');
+		var shop_id = $(this).attr('shop_id');
+		
+		var formData = new FormData();
+		formData.append("appointment_id",appointment_id);
+		formData.append("user_id" , user_id);
+		formData.append("shop_id",shop_id);
+
+	    $.ajax({
+	  		url: 'http://www.dappoint.com/shopapp/php/confirmAppointment-app.php',
+	  		type: 'POST',
+	  		data: formData,
+	  		async: false,
+	  		success: function(data) {
+	  			location.reload();
+		  },
+	  cache: false,
+	  contentType: false,
+	  processData: false
+	});
+});
+	
+	$(this).on( 'click' , '.delete_app' , function(){
+		
+		var appointment_id = $(this).attr('appointment_id');
+		var user_id = $(this).attr('user_id');
+		var shop_id = $(this).attr('shop_id');
+		
+		var formData = new FormData();
+		formData.append("appointment_id",appointment_id);
+		formData.append("user_id" , user_id);
+		formData.append("shop_id",shop_id);
+
+	    $.ajax({
+	  		url: 'http://www.dappoint.com/shopapp/php/deleteAppointment-app.php',
+	  		type: 'POST',
+	  		data: formData,
+	  		async: false,
+	  		success: function(data) {
+	  			location.reload();
+		  },
+	  cache: false,
+	  contentType: false,
+	  processData: false
+	});
+		
+	});
+	
+	$(this).on( 'click' , '.postpone_app' , function(){
+		
+		var appointment_id = $(this).attr('appointment_id');
+		var user_id = $(this).attr('user_id');
+		var shop_id = $(this).attr('shop_id');
+		
+		var formData = new FormData();
+		formData.append("appointment_id",appointment_id);
+		formData.append("user_id" , user_id);
+		formData.append("shop_id",shop_id);
+
+	    $.ajax({
+	  		url: 'http://www.dappoint.com/shopapp/php/postponeAppointment-app.php',
+	  		type: 'POST',
+	  		data: formData,
+	  		async: false,
+	  		success: function(data) {
+	  			location.reload();
+		  },
+	  cache: false,
+	  contentType: false,
+	  processData: false
+	});
+
+	});
+	
+	$(this).on( 'click' , '.modal_confirm_app' , function(){
+
+		var appointment_id = $(this).attr('appointment_id');
+		var user_id = $(this).attr('user_id');
+		var shop_id = $(this).attr('shop_id');
+		
+		var formData = new FormData();
+		formData.append("appointment_id",appointment_id);
+		formData.append("user_id" , user_id);
+		formData.append("shop_id",shop_id);
+
+	    $.ajax({
+	  		url: 'http://www.dappoint.com/shopapp/php/confirmAppointment-app.php',
+	  		type: 'POST',
+	  		data: formData,
+	  		async: false,
+	  		success: function(data) {
+	  			document.location = 'my-appointment.html?client_id=' + user_id;
+		  },
+	  cache: false,
+	  contentType: false,
+	  processData: false
+	});
+});
+	
+	$(this).on( 'click' , '.modal_postpone_app' , function(){
+		
+		var appointment_id = $(this).attr('appointment_id');
+		var user_id = $(this).attr('user_id');
+		var shop_id = $(this).attr('shop_id');
+		
+		var formData = new FormData();
+		formData.append("appointment_id",appointment_id);
+		formData.append("user_id" , user_id);
+		formData.append("shop_id",shop_id);
+
+	    $.ajax({
+	  		url: 'http://www.dappoint.com/shopapp/php/deleteAppointment-app.php',
+	  		type: 'POST',
+	  		data: formData,
+	  		async: false,
+	  		success: function(data) {
+	  			document.location = 'my-appointment.html?client_id=' + user_id;
+		  },
+	  cache: false,
+	  contentType: false,
+	  processData: false
+	});
+
+	});
+
+});
+
+function loadAppointmentDetails(){
+	
+	var month = ['','January','February','March','April','May','June','July','August','September','October','November','December'];
+	
+	var appointment_id = getQueryParam('appointment_id');
+	
+	var formData = new FormData();
+	
+	if( appointment_id == null ){
+		return false;
+	}
+	
+	formData.append("appointment_id",appointment_id);
+
+    $.ajax({
+  		url: 'http://www.dappoint.com/shopapp/php/appointmentDetails-app.php',
+  		type: 'POST',
+  		data: formData,
+  		async: false,
+  		success: function(data) {
+
+  			var finaldata = JSON.parse(data);
+  			
+  			if( finaldata.OPERATION == 0){
+
+  				var value = finaldata.SEARCH_RESULT;
+  				
+  					var user_apnt_time = value.user_apnt_time;
+					var times = user_apnt_time.split(':');
+					
+					var date = value.user_apnt_dt;
+					
+					var date_split = date.split('-');
+					
+  					$('.modal-date-time').html( date_split[2] + ' ' + month[ date_split[1] ] + ' ' + date_split[0] + ' - ' + times[0] + ':' + times[1]  );
+  					$('.modal_shop_name').html( value.shop_name1 );
+  					$('.modal_doc_name').html( value.first_line_activity );
+  					$('.modal_shop_desc').html( value.shop_desc );
+  					
+  					
+  					$('.modal_postpone_app').attr('user_id' , value.user_id );
+  					$('.modal_postpone_app').attr('shop_id' , value.shop_id );
+  					$('.modal_postpone_app').attr('appointment_id' , appointment_id );
+  					
+  					$('.modal_confirm_app').attr('user_id' , value.user_id );
+  					$('.modal_confirm_app').attr('shop_id' , value.shop_id );
+  					$('.modal_confirm_app').attr('appointment_id' , appointment_id );
+
+  					var relativeUrl = null;
+  					
+  					if( ! jQuery.isEmptyObject( value.shop_img_url )){
+  		                var start_index = value.shop_img_url.indexOf('upload');
+  		                var end_index = value.shop_img_url.length;
+  		                relativeUrl = value.shop_img_url.substring(start_index,end_index);
+  					}
+
+	                if( ! jQuery.isEmptyObject( relativeUrl ) ){
+	                	$('.modal_profile_img').attr("src" , "http://www.dappoint.com/shopapp/" + relativeUrl );
+	                }
+  			}
+  },
+  cache: false,
+  contentType: false,
+  processData: false
+});
+
+    $('#mymodal').trigger('click');
+    
+}
+
+</script>
+
+	<div class="ibox-content cancel_appointment_clone display_none">
+    	<div class="feed-element" >
+			<div class="appoinment-details " >
+    				<a class="pull-left" style="margin-top: 10px;padding: 5px;">
+         				<img alt="image" class="img-circle profile_img" src="../img/default.jpg" style="width: 70px;height: 70px;">
+         			</a>
+            	<div class="media-body ">
+            				
+            				<span class="pull-right" style="margin-top: 25px;margin-right: 10px;">
+            				
+	                    	<span class="appointment_time" style="font-size: 12px;font-weight: bold;color: black;"></span>
+	                        <br>
+	                        <span class="label-red">CANCELLED</span>
+	                        </span>
+	                        
+	                        <span class="pull-left" style="margin-top: 20px;">
+	                        <span class="shop_name" style="font-size: 14px;color: #050505;font-weight: bold;"></span>
+							<br>
+	                        <small class="text-muted shop_desc"></small>
+	                        <br>
+							<span class="doctor_name" style="font-size: 13px;color: black;"></span>
+							</span>
+            	</div>
+           </div>
+         </div>                                                 
+    </div> 
+
+
+	<div class="swiper-container confirmed_appointment_clone display_none">
+		<div class="swiper-wrapper">
+        	<div class="ibox-content swiper-slide">
+        		<div class="feed-element appoinment" >
+					<div class="appoinment-details " >
+        				<a class="pull-left" style="margin-top: 10px;padding: 5px;">
+            				<img alt="image" class="img-circle profile_img" src="../img/default.jpg" style="width: 70px;height: 70px;">
+            			</a>
+	                    <div class="media-body">
+	                    	
+	                    	<span class="pull-right" style="margin-top: 25px;margin-right: 10px;">
+	                    		<span class="appointment_time" style="margin-left: 15px;font-size: 12px;font-weight: bold;color: black;"></span>
+	                        	<br>
+	                        	<span class="label-green ">CONFIRMED</span>
+	                        </span>
+	                        
+	                        <span class="pull-left" style="margin-top: 20px;">
+	                        	<span class="shop_name" style="font-size: 14px;color: #050505;font-weight: bold;" ></span>
+								<br>
+	                        	<small class="text-muted shop_desc"></small>
+	                        	<br>
+								<span class="doctor_name" style="font-size: 13px;color: black;" ></span>
+							</span>
+						</div>
+                    </div>
+				</div>                                                 
+            </div>
+   			<div class="ibox-content swiper-slide swiper-slide-active">
+				<div class="feed-element" >
+					<div class="media-body appoinment-options swiper-slide" >
+						<div style="width: 60%;float: left;margin-top: 15px;">
+							<i class="fa fa-check-circle confirm_app" style="color: green;font-size: 45px !important;padding: 10px;"></i>
+							<i class="fa fa-phone-square postpone_app" style="color: red;font-size: 45px !important;padding: 10px;"></i>
+							<i class="fa fa-phone-square delete_app" style="color: red;font-size: 45px !important;padding: 10px;"></i>
+						</div>
+						<div style="width: 36%;float: right;">
+                        	<a class="pull-left" style="margin-top: 10px;padding: 5px;">
+            				<img alt="image" class="img-circle profile_img" src="../img/default.jpg" style="width: 70px;height: 70px;">
+            			</a>
+            			</a>
+                        </div>													
+                    </div>   
+                 </div>                                                 
+              </div>
+           </div>
+           </div>    
+           
+<div class="bs-example">
+    <a href="#myModal" id="mymodal" class="btn btn-lg btn-primary ui-link" data-toggle="modal" style="display: none;"></a>
+    
+    <!-- Modal HTML -->
+    <div id="myModal" class="modal"  >
+        <div class="modal-dialog">
+            <div class="modal-content" style="background: #e5e5e5;">
+                <div class="modal-header" style="border: none;">
+                    <button type="button" class="close ui-btn ui-shadow ui-corner-all" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body">
+                	<div class="col-lg-12" style="background: #71215a;padding: 15px;">
+                    	<p style="font-size: 20px;font-weight: bold;color: white;text-align: center;" class="modal_shop_name"></p>
+                    	<p style="font-size: 15px;font-weight: bold;color: white;text-align: center;" class="modal-date-time"></p>
+                    </div>
+        	<div class="ibox-content swiper-slide" style="background: #e5e5e5;">
+        		<div class="feed-element appoinment">
+					<div class="appoinment-details ">
+        				<a class="pull-left ui-link" style="margin-top: 10px;padding: 5px;">
+            				<img alt="image" class="img-circle modal_profile_img" style="width: 70px;height: 70px;">
+            			</a>
+	                    <div class="media-body">
+	                    	
+	                        <span class="pull-left" style="margin-top: 20px;">
+	                        	<span style="font-size: 14px;color: #050505;font-weight: bold;" class="modal_doc_name"></span>
+								<br>
+	                        	<small class="text-muted modal_shop_desc"></small>
+	                        	<br>
+								<span class="modal_" style="font-size: 13px;color: black;"></span>
+							</span>
+						</div>
+                    </div>
+				</div>  
+				<div class="col-lg-12" style="background: #e5e5e5;">
+					<div class="row" style="background: #e5e5e5;">
+						<div class="ibox-content" style="border: none;background: #e5e5e5;">
+							<div class="feed-element" style="padding: 10px;margin-left: 15px;">
+								<div class="media-body ">
+									<div class="pull-left" style="width: 50%;float: left;padding: 5px;">
+										<i class="fa fa-check-circle " style="color: green; font-size: 40px; padding: 10px;"></i>
+										<div style="clear: both;"></div>
+										<span style="color: green; font-weight: bold;" class="modal_confirm_app">I
+											CONFIRM</span><span></span>
+									</div>
+									<div class="pull-right" style="width: 50%;float: left;padding: 5px;">
+										<i class="fa fa-phone-square " style="color: red; font-size: 40px; padding: 10px;"></i>
+										<div style="clear: both;"></div>
+										<span style="color: red; font-weight: bold;" class="modal_postpone_app" >POSTPONE
+										</span><span></span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>				                                               
+            </div>
+           </div>
+            </div>
+        </div>
+    </div>
+</div>     
+</body>
+
+</html>

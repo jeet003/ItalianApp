@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Italian App</title>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Italian App</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/animate.css" rel="stylesheet">
+    <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<script src="cordova.js" id="xdkJScordova_"></script>
+	<script type="text/javascript" src="../js/jquery-1.12.3.js"></script>
+	<script src="../js/app_1.js"></script>
+	
+    
+<style type="text/css">
+
+.nav>li>a:focus, .nav>li>a:hover {
+    text-decoration: none;
+    background: none;
+}
+
+.theme-config {
+    position: absolute;
+    top: 0px;
+    overflow: hidden;
+        left: 0;
+}
+
+.skin-setttings {
+    width: 220px;
+    margin-left: 0px;
+    background: #2f4050;
+}
+.img_css{
+width: 38px;
+    height: 38px;
+}
+.cursor_pointer{
+cursor: pointer;
+}
+.mg_top_20{
+margin-top: 20px;
+}
+
+.display_none{
+display: none;
+}
+
+.min_height_50{
+    min-height: 50px;
+}
+
+.mg_left_10{
+margin-left: 10px;
+}
+
+#header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  min-height: 30%;
+  background: #6f2a5c;
+}
+
+.centered {
+  position: fixed;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.page_header_icon {
+    font-size: 20px;
+    color: #FFFFFF;
+    margin: 15px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+#header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  min-height: 30%;
+  background: #6f2a5c;
+}
+
+ html, body {
+    margin:0;
+    padding:0;
+    height:100%; 
+    background: none;
+ } 
+ 
+  #footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    min-height: 30%;
+    background: #6f2a5c;
+}
+
+.client_details{
+color: #ffffff;
+font-weight:bold;
+margin: 25px;
+font-size: 20px;
+}
+.client_details_small{
+color: #ffffff;
+margin: 25px;
+font-size: 10px;
+}
+
+.barCode_css{
+    position: absolute;
+    width: 100%;
+    height: 20%;
+    top: 30%;
+}
+
+</style>
+</head>
+
+<style>
+div.container {
+    width: 100%;
+    border: 1px solid gray;
+    height:600px;
+}
+
+
+</style>
+
+   <script type="text/javascript" src="../js/jquery-barcode.js"></script>
+   <script type="text/javascript" src="../js/common.js"></script>
+<script src="../js/jquery.mobile-1.4.5.js"></script>
+
+<script type="text/javascript">
+
+   $(document).ready(function(){
+
+	   $('input[name=btype]').click(function(){
+	          if ($(this).attr('id') == 'datamatrix') showConfig2D(); else showConfig1D();
+	        });
+	        $('input[name=renderer]').click(function(){
+	          if ($(this).attr('id') == 'canvas') $('#miscCanvas').show(); else $('#miscCanvas').hide();
+	        });
+	  generateBarcode();
+   });
+   
+      function generateBarcode(){
+        var value = $('.qrcode').val();
+        
+        var btype = "code39";
+        var renderer = "css";
+        
+		var quietZone = false;
+        if ($("#quietzone").is(':checked') || $("#quietzone").attr('checked')){
+          quietZone = true;
+        }
+		
+        var settings = {
+          output:renderer,
+          bgColor: $("#bgColor").val(),
+          color: $("#color").val(),
+          barWidth: $("#barWidth").val(),
+          barHeight: $("#barHeight").val(),
+          moduleSize: $("#moduleSize").val(),
+          posX: $("#posX").val(),
+          posY: $("#posY").val(),
+          addQuietZone: $("#quietZoneSize").val()
+        };
+        if ($("#rectangular").is(':checked') || $("#rectangular").attr('checked')){
+          value = {code:value, rect: true};
+        }
+        if (renderer == 'canvas'){
+          clearCanvas();
+          $("#barcodeTarget").hide();
+          $("#canvasTarget").show().barcode(value, btype, settings);
+        } else {
+          $("#canvasTarget").hide();
+          $("#barcodeTarget").html("").show().barcode(value, btype, settings);
+        }
+      }
+          
+      function showConfig1D(){
+        $('.config .barcode1D').show();
+        $('.config .barcode2D').hide();
+      }
+      
+      function showConfig2D(){
+        $('.config .barcode1D').hide();
+        $('.config .barcode2D').show();
+      }
+      
+      function clearCanvas(){
+        var canvas = $('#canvasTarget').get(0);
+        var ctx = canvas.getContext('2d');
+        ctx.lineWidth = 1;
+        ctx.lineCap = 'butt';
+        ctx.fillStyle = '#FFFFFF';
+        ctx.strokeStyle  = '#000000';
+        ctx.clearRect (0, 0, canvas.width, canvas.height);
+        ctx.strokeRect (0, 0, canvas.width, canvas.height);
+      }
+      
+    </script>
+  </head>
+  
+<body>
+
+
+    <div id="container">
+    <div class="theme-config" >
+    <div class="theme-config-box show">
+        <div class="skin-setttings" id="menu-details" style="display:none;position: fixed;height: 100%;">
+         	
+        
+        <div style="width: 100%;">
+        <img alt="image" class="img-circle my-profile-image" src="../img/profile.png" style="width: 120px;margin-left: 50px;margin-top: 15px;">
+        <span class="clear" style="color: #fff;margin-left: 65px;font-size: 15px;"> <span class="block m-t-xs"> <strong class="font-bold client_name"></strong>
+        </div>
+        	
+		<ul class="nav metismenu" style="margin-top: 25px;" >
+                <li>
+                    <a class="nav_menu" id="my-account" style="font-size: 15px;font-weight: bold;"><i style="color: #319c8e;" class="fa fa-user"></i> <span class="nav-label">MY ACCOUNT</span> <span class="fa fa-angle-right pull-right"></span></a>
+                </li>
+                <li>
+                    <a class="nav_menu" id="shop-connected" style="font-size: 15px;font-weight: bold;"><i style="color: #319c8e;" class="fa fa-connectdevelop"></i> <span class="nav-label">SHOP CONNECTED</span><span class="fa fa-angle-right pull-right"></span></a>
+                </li>
+                <li>
+                    <a class="nav_menu" id="barCode" style="font-size: 15px;font-weight: bold;"><i style="color: #319c8e;"  class="fa fa-barcode "></i> <span class="nav-label">BARCODE</span><span class="fa fa-angle-right pull-right"></span></a>
+                </li>
+                <li>
+                    <a class="nav_menu" id="my-appointment" style="font-size: 15px;font-weight: bold;"><i style="color: #319c8e;" class="fa fa-book"></i> <span class="nav-label">APPOINMENTS</span> <span class="badge label label-info appointment_count"></span><span class="fa fa-angle-right pull-right"></span></a>
+                </li>
+                <li>
+                    <a class="nav_menu" url="../index.html" style="font-size: 15px;font-weight: bold;"><i style="color: #319c8e;" class="fa fa-sign-out"></i> <span class="nav-label">Logout</span></a>
+                </li>
+
+            </ul>        
+            </div>
+        </div>
+</div>
+<div id="header">
+ <i class="fa fa-list page_header_icon" id="mymenu"></i>
+ <a class="fa fa-plus-circle pull-right barcode-menu page_header_icon nav_menu"></a>
+<h1 style="color: white;text-align: center;font-size: 20px;">To connect with a shop please show this code</h1>
+</div>
+
+<div class="barCode_css">
+<div id="barcodeTarget" style="align:center; margin: auto;margin-top: 12%;" ></div>
+</div>
+
+<div id="footer">
+<br>
+<br>
+<span class="client_details client_name"></span> 
+<br>
+<br>
+<span class="client_email client_details_small"></span> 
+<br>
+<span class="client_phone client_details_small"></span>
+<br>
+<br>
+<a id="back_button" class="fa fa-arrow-circle-left nav_menu" style="color: #ffffff;position: fixed;left: 50%;transform: translate(-50%, -50%);font-size: 40px;"></a>
+</div>
+
+<input type="hidden" class="qrcode" />
+<input type="hidden" id="barWidth" value="2" />
+<input type="hidden" id="barHeight" value="150" />
+<input type="hidden" id="bgColor" value="#FFFFFF">
+
+</div>
+
+</body>
+</html>

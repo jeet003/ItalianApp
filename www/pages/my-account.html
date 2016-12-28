@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Italian App</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/animate.css" rel="stylesheet">
+    <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+<script src="cordova.js" id="xdkJScordova_"></script>
+<script type="text/javascript" src="../js/jquery-1.12.3.js"></script>
+<script src="../js/app_1.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script src="../js/jquery.mobile-1.4.5.js"></script>
+    
+<style type="text/css">
+
+.page_header_icon {
+    font-size: 20px;
+    color: #FFFFFF;
+    margin: 15px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+#header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  min-height: 10%;
+  background: #6f2a5c;
+}
+
+.form-control{
+border-radius:5px;
+}
+.col-centered{
+    margin: 0 auto;
+    display: table;
+}
+body{
+	background: #ffffff;
+}
+.nav>li>a:focus, .nav>li>a:hover {
+    text-decoration: none;
+    background: none;
+}
+
+.theme-config {
+    position: absolute;
+    top: 0px;
+    overflow: hidden;
+        left: 0;
+}
+
+.skin-setttings {
+    width: 220px;
+    margin-left: 0px;
+    background: #2f4050;
+}
+.img_css{
+width: 38px;
+    height: 38px;
+}
+.cursor_pointer{
+cursor: pointer;
+}
+.mg_top_20{
+margin-top: 20px;
+}
+
+.display_none{
+display: none;
+}
+
+.min_height_50{
+    min-height: 50px;
+}
+
+.mg_left_10{
+margin-left: 10px;
+}
+
+
+
+</style>
+</head>
+<body>
+    <div class="container">
+    <div class="row">
+    <div class="theme-config" >
+    <div class="theme-config-box show">
+        <div class="skin-setttings" id="menu-details" style="display:none;position: fixed;height: 100%;">
+         	
+        	
+        <div style="width: 100%;">
+        <img alt="image" class="img-circle my-profile-image" src="../img/profile.png" style="width: 120px;margin-left: 50px;margin-top: 15px;">
+        <span class="clear" style="color: #fff;margin-left: 65px;font-size: 15px;"> <span class="block m-t-xs"> <strong class="font-bold client_name"></strong>
+        </div>
+        	
+		<ul class="nav metismenu" style="margin-top: 25px;">
+                <li >
+                    <a class="nav_menu" id="my-account" style="font-size: 15px;font-weight: bold;"><i style="color: #319c8e;" class="fa fa-user"></i> <span class="nav-label">MY ACCOUNT</span> <span class="fa fa-angle-right pull-right"></span></a>
+                </li>
+                <li>
+                    <a class="nav_menu" id="shop-connected" style="font-size: 15px;font-weight: bold;"><i style="color: #319c8e;" class="fa fa-connectdevelop"></i> <span class="nav-label">SHOP CONNECTED</span><span class="fa fa-angle-right pull-right"></span></a>
+                </li>
+                <li>
+                    <a class="nav_menu" id="barCode" style="font-size: 15px;font-weight: bold;"><i style="color: #319c8e;"  class="fa fa-barcode "></i> <span class="nav-label">BARCODE</span><span class="fa fa-angle-right pull-right"></span></a>
+                </li>
+                <li>
+                    <a class="nav_menu" id="my-appointment" style="font-size: 15px;font-weight: bold;"><i style="color: #319c8e;" class="fa fa-book"></i> <span class="nav-label">APPOINMENTS</span> <span class="badge label label-info appointment_count"></span><span class="fa fa-angle-right pull-right"></span></a>
+                </li>
+                <li>
+                    <a class="nav_menu" url="../index.html" style="font-size: 15px;font-weight: bold;"><i style="color: #319c8e;" class="fa fa-sign-out"></i> <span class="nav-label">Logout</span></a>
+                </li>
+
+            </ul>        
+            </div>
+        </div>
+	</div>
+
+<div id="header">
+ <i class="fa fa-list page_header_icon" id="mymenu"></i>
+ <a class="fa fa-plus-circle pull-right nav_menu barcode-menu page_header_icon"></a>
+</div>
+		<div class="col-lg-12" style="margin-top: 15%;">
+<div class="row">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>My Account </h5>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="row">
+                            <div class="col-sm-10 ">
+                            	<span class="success" style="color: green"></span>
+                                <form id="updateAccForm">
+                                    <div class="form-group"><label>First Name</label> <input name="User_First_Name" id="first_name" type="text" placeholder="First Name" class="form-control"></div>
+                                    <div class="form-group"><label>Last Name</label> <input name="User_Last_Name" id="last_name" type="text" placeholder="Last Name" class="form-control"></div>
+                                    <div class="form-group"><label>Telephone Number</label> <input name="User_Login_Mobile_No" id="telephone" type="text" placeholder="Telephone Number" class="form-control"></div>
+                                    <div class="form-group"><label>Email</label> <input name="User_email_id1" type="text" id="email" placeholder="email" class="form-control"></div>
+                                    <div class="col-lg-12">
+                                        <button class="btn btn-sm btn-primary col-centered" onclick="updateAccountDetails();" type="button" style="background:  #66004b;width: 250px;"><strong>Submit</strong></button>
+                                    </div>
+                                    <input type="hidden" id="user_id" name="User_id" >
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                            </div>    
+	</div>
+	</div>
+	
+	<script type="text/javascript">
+	
+	$(document).ready(function(){
+		loadAccountDetails();
+	});
+
+	function updateAccountDetails(){
+		
+		var formData = new FormData($('#updateAccForm')[0]);
+
+	    $.ajax({
+	  		url: 'http://www.dappoint.com/shopapp/php/editMyAccount-app.php',
+	  		type: 'POST',
+	  		data: formData,
+	  		async: false,
+	  		success: function(data) {
+	  			
+	  			$('.success').html('Data successfully updated');
+	  		},
+	  		cache: false,
+	  	  contentType: false,
+	  	  processData: false
+	  	});
+	}
+	
+	function loadAccountDetails(){
+		
+		var client_id = getQueryParam('client_id');
+		var formData = new FormData();
+		
+		formData.append("user_id",client_id);
+
+	    $.ajax({
+	  		url: 'http://www.dappoint.com/shopapp/php/viewMyAccount-app.php',
+	  		type: 'POST',
+	  		data: formData,
+	  		async: false,
+	  		success: function(data) {
+
+	  			var finaldata = JSON.parse(data);
+	  			
+	  			if( finaldata.OPERATION == 0){
+	  				
+	  				var searchData = finaldata.SEARCH_RESULT;
+	  				
+	                var user_id = searchData.User_id;
+	                var first_name = searchData.User_First_Name;
+	                var last_name = searchData.User_Last_Name;
+	                var telephone = searchData.User_Login_Mobile_No;
+	                var email = searchData.User_email_id1;
+	                
+	                $( '#first_name' ).val( first_name );
+	                $( '#last_name' ).val( last_name );
+	                $( '#user_id' ).val( user_id );
+	                $( '#telephone' ).val( telephone );
+	                $( '#email' ).val( email );
+	  			}
+	  },
+	  cache: false,
+	  contentType: false,
+	  processData: false
+	});
+	}
+	
+	
+	</script>
+</body>
+
+</html>

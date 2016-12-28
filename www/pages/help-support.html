@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Italian App</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/animate.css" rel="stylesheet">
+    
+    
+    
+    <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    
+    <script type="text/javascript" src="../js/jquery-1.12.3.js"></script>
+    
+<style type="text/css">
+
+.form-control{
+border-radius:5px;
+}
+.col-centered{
+    margin: 0 auto;
+    display: table;
+}
+body{
+background:  #66004b;
+}
+.nav>li>a:focus, .nav>li>a:hover {
+    text-decoration: none;
+    background: none;
+}
+
+.theme-config {
+    position: absolute;
+    top: 0px;
+    overflow: hidden;
+        left: 0;
+}
+
+.skin-setttings {
+    width: 220px;
+    margin-left: 0px;
+    background: #2f4050;
+}
+.img_css{
+width: 38px;
+    height: 38px;
+}
+.cursor_pointer{
+cursor: pointer;
+}
+.mg_top_20{
+margin-top: 20px;
+}
+
+.display_none{
+display: none;
+}
+
+.min_height_50{
+    min-height: 50px;
+}
+
+.mg_left_10{
+margin-left: 10px;
+}
+
+
+
+</style>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+	
+	$('#mymenu').click(function(){
+		$('#menu-details').addClass('animated fadeInLeft');
+		$('#menu-details').show();
+	});
+	
+	$('#mymenuhide').click(function(){
+		$('#menu-details').removeClass('animated fadeInLeft');
+		$('#menu-details').hide();
+	});
+	
+	$(this).on( 'click' , '.appoinment' , function(){
+		$(this).find('.appoinment-options').slideToggle();
+	});
+	
+});
+
+</script>
+</head>
+
+<body>
+
+<!-- fadeInLeft animated -->
+
+    <div id="container">
+    <div class="theme-config" >
+    <div class="theme-config-box show">
+        <div class="skin-setttings" id="menu-details" style="display:none;position: fixed;height: 100%;">
+        <i class="fa fa-cog" style="font-size: 20px;color: #d6e8e8;cursor: pointer;margin-top: 30px;margin-left: 15px;color: #88e4e4;" id="mymenuhide"></i> 	
+        	
+<ul class="nav metismenu" >
+                <li class="nav-header" style="margin-top: 60px;">
+                    <div class="dropdown profile-element" style="margin-left: 50px;"> <span>
+                            <img alt="image" class="img-circle" src="../img/profile.jpg" style="width: 60px;">
+                             </span>
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">David Williams</strong>
+                             </span> </span> </a>
+                    </div>
+                </li>
+                <li>
+                    <a href="my-account.html" style="font-size: 15px;font-weight: bold;"><i style="color: #319c8e;" class="fa fa-user"></i> <span class="nav-label">MY ACCOUNT</span> <span class="fa fa-angle-right pull-right"></span></a>
+                </li>
+                <li>
+                    <a href="shop-connected.html" style="font-size: 15px;font-weight: bold;"><i style="color: #319c8e;" class="fa fa-connectdevelop"></i> <span class="nav-label">SHOP CONNECTED</span><span class="fa fa-angle-right pull-right"></span></a>
+                </li>
+                <li>
+                    <a href="barCode.html" style="font-size: 15px;font-weight: bold;"><i style="color: #319c8e;"  class="fa fa-barcode "></i> <span class="nav-label">BARCODE</span><span class="fa fa-angle-right pull-right"></span></a>
+                </li>
+                <li>
+                    <a href="my-appointment.html" style="font-size: 15px;font-weight: bold;"><i style="color: #319c8e;" class="fa fa-book"></i> <span class="nav-label">APPOINMENTS</span> <span class="badge label label-info">10</span><span class="fa fa-angle-right pull-right"></span></a>
+                </li>
+                <li>
+                    <a href="help-support.html" style="font-size: 15px;font-weight: bold;"><i style="color: #319c8e;" class="fa fa-question-circle-o"></i> <span class="nav-label">HELP & APP</span><span class="fa fa-angle-right pull-right"></span></a>
+                </li>
+                <li>
+                    <a href="../index.html" style="font-size: 15px;font-weight: bold;"><i style="color: #319c8e;" class="fa fa-sign-out"></i> <span class="nav-label">Logout</span></a>
+                </li>
+
+            </ul>        
+            </div>
+        </div>
+</div>
+<div class="col-lg-12 mg_top_20 ">
+ <i class="fa fa-list" style="font-size: 20px;color: #d6e8e8;cursor: pointer;" id="mymenu"></i> <a href="barCode.html" style="cursor: pointer;font-size: 20px;color: #d6e8e8;" class="fa fa-plus-circle pull-right"></a>
+</div>
+			<div class="col-lg-12 ">
+				<h3 class="col-centered" style="color:white;">Help & support Page content to be given</h3>
+            </div>
+                            </div>    
+	</div>
+</body>
+
+</html>

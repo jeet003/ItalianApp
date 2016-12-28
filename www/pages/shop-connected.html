@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Italian App</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/animate.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/swiper.min.css">
+    <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    
+<style type="text/css">
+
+body{
+background: #ffffff;
+}
+.nav>li>a:focus, .nav>li>a:hover {
+    text-decoration: none;
+    background: none;
+}
+
+.theme-config {
+    position: absolute;
+    top: 0px;
+    overflow: hidden;
+        left: 0;
+}
+
+.skin-setttings {
+    width: 220px;
+    margin-left: 0px;
+    background: #2f4050;
+}
+.img_css{
+width: 38px;
+    height: 38px;
+}
+.cursor_pointer{
+cursor: pointer;
+}
+.mg_top_20{
+margin-top: 20px;
+}
+
+.display_none{
+display: none;
+}
+
+.min_height_50{
+    min-height: 50px;
+}
+
+.mg_left_10{
+margin-left: 10px;
+}
+
+.label-green{
+    border: 1px solid #75e1a6;
+    color: #fff;
+    background: #50d38a;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 1px;
+}
+
+.label-red{
+    border: 1px solid red;;
+    color: #fff;
+    background: red;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 1px;
+}
+.test-bold{
+font-weight: bold;
+}
+
+.page_header_icon {
+    font-size: 20px;
+    color: #FFFFFF;
+    margin: 15px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+#header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  min-height: 10%;
+  background: #6f2a5c;
+}
+
+.ibox-content {
+    background-color: #ffffff;
+    color: inherit;
+    padding: 0px 4px 0px 5px;
+    border-color: #e7eaec;
+    border-image: none;
+    border-style: solid solid none;
+    border-width: 1px 0;
+}
+
+.ibox-title {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #ffffff;
+    border-color: #e7eaec;
+    border-image: none;
+    border-style: solid solid none;
+    border-width: 3px 0 0;
+    color: inherit;
+    margin-bottom: 0;
+    padding: 5px 12px 2px;
+    min-height: 35px;
+}
+</style>
+</head>
+
+<body>
+
+    <div class="container">
+    <div class="row">
+    <div class="theme-config" >
+    <div class="theme-config-box show">
+        <div class="skin-setttings" id="menu-details" style="display:none;position: fixed;height: 100%;">
+        
+        
+        <div style="width: 100%;">
+        <img alt="image" class="img-circle my-profile-image" src="../img/profile.png" style="width: 120px;margin-left: 50px;margin-top: 15px;">
+        <span class="clear" style="color: #fff;margin-left: 65px;font-size: 15px;"> <span class="block m-t-xs"> <strong class="font-bold client_name"></strong>
+        </div>
+        	
+		<ul class="nav metismenu" style="margin-top: 25px;">
+                <li >
+                    <a class="nav_menu" id="my-account" style="font-size: 15px;font-weight: bold;"><i style="color: #319c8e;" class="fa fa-user"></i> <span class="nav-label">MY ACCOUNT</span> <span class="fa fa-angle-right pull-right"></span></a>
+                </li>
+                <li>
+                    <a class="nav_menu" id="shop-connected" style="font-size: 15px;font-weight: bold;"><i style="color: #319c8e;" class="fa fa-connectdevelop"></i> <span class="nav-label">SHOP CONNECTED</span><span class="fa fa-angle-right pull-right"></span></a>
+                </li>
+                <li>
+                    <a class="nav_menu" id="barCode" style="font-size: 15px;font-weight: bold;"><i style="color: #319c8e;"  class="fa fa-barcode "></i> <span class="nav-label">BARCODE</span><span class="fa fa-angle-right pull-right"></span></a>
+                </li>
+                <li>
+                    <a class="nav_menu"  id="my-appointment" style="font-size: 15px;font-weight: bold;"><i style="color: #319c8e;" class="fa fa-book"></i> <span class="nav-label">APPOINMENTS</span> <span class="badge label label-info appointment_count"></span><span class="fa fa-angle-right pull-right"></span></a>
+                </li>
+                <li>
+                    <a class="nav_menu" url="../index.html" style="font-size: 15px;font-weight: bold;"><i style="color: #319c8e;" class="fa fa-sign-out"></i> <span class="nav-label">Logout</span></a>
+                </li>
+
+            </ul>        
+            </div>
+        </div>
+	</div>
+
+<div id="header">
+ <i class="fa fa-list page_header_icon" id="mymenu"></i>
+ <a class="fa fa-plus-circle nav_menu pull-right barcode-menu page_header_icon"></a>
+</div>
+	
+<div style="margin-top: 15%;">	
+	<div class="col-lg-12 no_app" style="color: red;margin-top: 80px;font-size: 20px;display: none;">
+	No shop connected
+	</div>
+							
+	<div class="col-lg-12 day_1 fav_shop_details" >
+		<div class="row">
+			<div class="ibox-title" style="background: #6f2a5c;color: #fff;font-size: 15px;">
+				Favorite
+			</div>
+			<div class="details"></div>
+		</div>
+	</div>
+	<div class="col-lg-12 shop_details">
+		<div class="row">
+			<div class="ibox-title" style="background: #6f2a5c;color: #fff;font-size: 15px;">
+				All Shop
+			</div>
+			<div class="details"></div>
+		</div>
+	</div>
+	
+</div>
+</div>
+	
+	<script src="cordova.js" id="xdkJScordova_"></script>
+	<script type="text/javascript" src="../js/jquery-1.12.3.js"></script>
+	<script src="../js/app_1.js"></script>
+	
+<script src="../js/swiper.min.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script src="../js/jquery.mobile-1.4.5.js"></script>
+
+<script type="text/javascript">
+
+function getShopConnected(){
+	
+	var formData = new FormData();
+	var user_id = getQueryParam('client_id');
+    formData.append( 'user_id' , user_id );
+    
+    $.ajax({
+  		url: 'http://www.dappoint.com/shopapp/php/shop-connected-app.php',
+  		type: 'POST',
+  		data: formData,
+  		async: false,
+  		success: function(data) {
+
+  			var finaldata = JSON.parse(data);
+  			
+  			if( finaldata.OPERATION == 0){
+  				
+  				var searchData = finaldata.SEARCH_RESULT;
+  				
+  				var appointment_count = 0;
+  				
+  				$.each( searchData , function( index, value ){
+  					
+  					var shop_connected_clone = $('.shop_connected_clone').clone();
+  					$( shop_connected_clone ).removeClass('shop_connected_clone');
+  					
+  					var relativeUrl = null;
+  					
+  					if( ! jQuery.isEmptyObject( value.shop_image )){
+  		                var start_index = value.shop_image.indexOf('upload');
+  		                var end_index = value.shop_image.length;
+  		                relativeUrl = value.shop_image.substring(start_index,end_index);
+  					}
+
+	                if( ! jQuery.isEmptyObject( relativeUrl ) ){
+	                	$( shop_connected_clone ).find('.profile_img').attr("src" , "http://www.dappoint.com/shopapp/" + relativeUrl );
+	                }
+  					
+	                var insertDate = value.insert_date.split('-');
+	                
+	                $( shop_connected_clone ).find('.shop_connected_date').html( insertDate[2] + '-' + insertDate[1] + '-' + insertDate[0] );
+  					$( shop_connected_clone ).find('.shop_name').html( value.shop_name );
+  					$( shop_connected_clone ).find('.shop_desc').html( value.shop_desc );
+  					$( shop_connected_clone ).find('.shop_city').html( value.shop_city );
+  					$( shop_connected_clone ).find('.fav_shop_icon').attr('shop_id', value.shop_id);
+  					$( shop_connected_clone ).find('.fav_shop_icon').attr('user_id', user_id );
+  					$( shop_connected_clone ).find('.fav_shop_icon').attr('status', value.fav_flag );
+
+  					$( shop_connected_clone ).find('.disconnect_shop').attr('shop_id', value.shop_id);
+  					$( shop_connected_clone ).find('.disconnect_shop').attr('user_id', user_id );
+  					
+  					$( shop_connected_clone ).removeClass('display_none');
+  					
+  					if( value.fav_flag === 'Y'){
+  						$( shop_connected_clone ).find('.fav_shop_icon').css('color','#fddb32');
+  						$('.fav_shop_details').find('.details').append( shop_connected_clone.html() );
+  					}
+  					
+  					$('.shop_details').find('.details').append( shop_connected_clone.html() );  						
+  	  			});
+  			}
+  },
+  cache: false,
+  contentType: false,
+  processData: false
+});
+}
+
+$(document).ready(function(){
+	
+	getShopConnected();
+	
+	var allshopcount = $('.shop_details').find('.details').find('div').length;
+	var favshopcount = $('.fav_shop_details').find('.details').find('div').length;
+	
+	if( favshopcount == 0 ){
+		$('.fav_shop_details').hide();
+	}
+	if( allshopcount == 0 ){
+		$('.shop_details').hide();
+	}
+	
+	if( allshopcount == 0 ){
+		$('.no_app').show();
+	}
+	
+	var swiper = new Swiper('.swiper-container', {
+        loop: true
+    });
+	
+	$(this).on( 'click' , '.fav_shop_icon' , function(){
+		
+		var user_id = $(this).attr('user_id');
+		var shop_id = $(this).attr('shop_id');
+		var status = $(this).attr('status');
+		
+		if( status == 'Y'){
+			status = 'N';
+		}
+		else{
+			status = 'Y';
+		}
+		
+		var formData = new FormData();
+		formData.append("user_id" , user_id);
+		formData.append("shop_id",shop_id);
+		formData.append("status",status);
+
+	    $.ajax({
+	  		url: 'http://www.dappoint.com/shopapp/php/favouriteShop-app.php',
+	  		type: 'POST',
+	  		data: formData,
+	  		async: false,
+	  		success: function(data) {
+	  			location.reload();
+		  },
+	  cache: false,
+	  contentType: false,
+	  processData: false
+	});
+		
+	});
+	
+	$(this).on( 'click' , '.disconnect_shop' , function(){
+		
+		var user_id = $(this).attr('user_id');
+		var shop_id = $(this).attr('shop_id');
+		
+		var formData = new FormData();
+		formData.append("user_id" , user_id);
+		formData.append("shop_id",shop_id);
+
+		alert();
+		
+	    $.ajax({
+	  		url: 'http://www.dappoint.com/shopapp/php/removeShop-app.php',
+	  		type: 'POST',
+	  		data: formData,
+	  		async: false,
+	  		success: function(data) {
+	  			location.reload();
+		  },
+	  cache: false,
+	  contentType: false,
+	  processData: false
+	});
+		
+	});
+});
+
+</script>
+
+	<div class="shop_connected_clone display_none">
+	<div class="swiper-container ">
+		<div class="swiper-wrapper">
+        	<div class="ibox-content swiper-slide">
+        		<div class="feed-element appoinment" >
+					<div class="appoinment-details " >
+        				<a class="pull-left" style="margin-top: 10px;padding: 5px;">
+            				<img alt="image" class="img-circle profile_img" src="../img/default.jpg" style="width: 70px;height: 70px;">
+            			</a>
+	                    <div class="media-body ">
+
+							<span class="pull-right" style="margin-top: 25px;margin-right: 10px;">
+	                    	<span class="shop_connected_date" style="font-size: 12px;font-weight: bold;color: black;"></span>
+	                        <br>
+	                        <span class="label-green">CONNECTED</span>
+	                        </span>
+	                        
+	                        <span class="pull-left" style="margin-top: 20px;">
+	                        <span class="shop_name" style="font-size: 14px;color: #050505;font-weight: bold;" ></span>
+							<br>
+	                        <small class="text-muted shop_desc"></small>
+	                        <br>
+							<span class="shop_city" style="font-size: 13px;color: black;" ></span>
+							</span>
+						</div>
+                    </div>
+				</div>                                                 
+            </div>
+   			<div class="ibox-content swiper-slide swiper-slide-active">
+				<div class="feed-element appoinment" >
+					<div class="media-body appoinment-options swiper-slide" >
+						<div style="width: 60%;float: left;margin-top: 25px;">
+						<i class="fa fa-phone-square " style="color:green;cursor:pointer; font-size: 45px !important;padding: 10px;"></i>
+						<i class="fa fa-star fav_shop_icon" style="cursor:pointer; font-size: 45px !important;padding: 10px;"></i>
+						<i class="fa fa-times disconnect_shop" style="color: red;font-size: 45px !important;padding: 10px;"></i>
+						</div>
+						<div style="width: 36%;float: right;">
+        				<a class="pull-left" style="margin-top: 10px;padding: 5px;">
+            				<img alt="image" class="img-circle profile_img" src="../img/default.jpg" style="width: 70px;height: 70px;">
+            			</a>
+                        </div>													
+                    </div>   
+                 </div>                                                 
+              </div>
+           </div>
+           </div>  
+           </div>  
+           </div>
+
+</body>
+
+</html>

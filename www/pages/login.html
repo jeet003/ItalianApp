@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Italian App</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="../js/jquery-1.12.3.js"></script>
+    
+<style type="text/css">
+
+.inner_div{
+text-align: center;
+    padding: 0;
+    vertical-align: middle;
+    display: table-cell;
+    margin: 0;
+}
+.div_complete{
+	width: 100%;
+    padding: 0;
+    display: table;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+}
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+ html { 
+  background: url('../img/app-login.jpg'); 
+  background-size: cover;
+}
+
+.img_css{
+width: 38px;
+    height: 38px;
+}
+.cursor_pointer{
+cursor: pointer;
+}
+.mg_top_20{
+margin-top: 10px;
+}
+
+.display_none{
+display: none;
+}
+
+.min_height_50{
+    min-height: 50px;
+}
+
+.mg_left_10{
+margin-left: 10px;
+}
+
+.page-title {
+    font-family: 'Open Sans' , sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: #FFFFFF;
+    margin-top: 5%;
+    letter-spacing: 4px;
+}
+
+
+.form-horizontal input[type="text"], .form-horizontal input[type="password"] {
+    width: 100%;
+    margin: 0;
+    padding: 5px 10px;
+    background: 0;
+    outline: 0;
+    font-style: italic;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    color: #FFFFFF;
+    outline: 0;
+}
+
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+</style>
+</head>
+
+<body>
+
+    <div id="container" class="div_complete">
+    
+   <div class="col-lg-12 inner_div" style="text-align: center;">
+                    <div class="ibox float-e-margins">
+	                        <div class="ibox-content">
+	                        
+	                         <span class="success" style="colour:green"></span>
+	                        
+                            <form class="form-horizontal" id="login">
+                                <p class="page-title col-lg-12" style="text-align: center;margin-bottom: 30px;">Log In</p>
+                                <div class="col-lg-12" style="top:-20px;text-align: center;">
+                                <img alt="image" class="img-circle" src="../img/facebook.png" style="width: 80px;border: 2px solid #504c43;">
+                                <img alt="image" class="img-circle" src="../img/gmail.png" style="width: 80px;border: 2px solid #504c43;">
+                                </div>
+
+								<div class="col-lg-12" style="top:-20px;text-align: center;">
+                                <span class="img-circle" style="border: 2px solid #504c43;padding: 6px;color: wheat;">OR</span>
+                                </div>                                
+                                <div class="col-lg-12">
+                                
+                                    <div class="form-group" class="text-center">
+									    <div class="input-group" style="margin:auto;">
+      										<input type="text" placeholder="User Name" name="username" class="form-control" style="width: 250px;border-radius:5px;">
+    									</div>
+  									</div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group" class="text-center">
+									    <div class="input-group" style="margin:auto;">
+      										<input type="password" placeholder="Password" name="password" class="form-control" style="width: 250px;border-radius:5px;">
+    									</div>
+  									</div>
+                                </div>
+                                <div class="col-lg-12">
+                                        <button type="button" class="btn btn-success"  onclick="clientLogin();" type="submit" style="width: 250px;">Sign in</a>
+                                </div>
+                                <div class="col-lg-12" style="margin-top:15px;">
+                                        <span style="border-top:1px solid white;"><a href="register.html" style="color:white;border-right: 1px solid white;">Create an account &nbsp;</a>
+                                        &nbsp;&nbsp;&nbsp;<a href="forgot-password.html" style="color:white;">Forgot password</a></span>
+                                </div>
+                                
+                            </form>
+                        </div>
+                    </div>
+                </div>
+   
+	</div>
+	<script type="text/javascript">
+	
+	var getQueryParam = function getQueryParam(sParam) {
+	    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+	        sURLVariables = sPageURL.split('&'),
+	        sParameterName,
+	        i;
+
+	    for (i = 0; i < sURLVariables.length; i++) {
+	        sParameterName = sURLVariables[i].split('=');
+
+	        if (sParameterName[0] === sParam) {
+	            return sParameterName[1] === undefined ? true : sParameterName[1];
+	        }
+	    }
+	};
+	
+	
+var pageMessage = getQueryParam('message');
+
+
+if(!jQuery.isEmptyObject(pageMessage))
+	
+	{
+	
+	$(".success").html(pageMessage);
+	
+	}
+	
+	
+	function clientLogin(){
+		
+		var formData = new FormData($("#login")[0]);
+		
+	    	$.ajax({
+	  			url: 'http://www.dappoint.com/shopapp/php/login-client-app.php',
+	  			type: 'POST',
+	  			data: formData,
+	  			async: false,
+	  			success: function(data) {
+		  			var finaldata = JSON.parse(data);
+		
+		  			if( finaldata.OPERATION == 0 ){
+		  				
+		  				var shop_connected = getShopConnected( finaldata.CLIENTID );
+		  				
+		  				if( shop_connected == 0 ){
+		  					document.location="barCode.html?client_id="+finaldata.CLIENTID;	
+		  				}
+		  				else{
+		  					document.location="my-appointment.html?client_id="+finaldata.CLIENTID;
+		  				}
+	    			}
+	    			else{
+	    				document.location="login.html?message=Error.";
+	    			}
+	  			},
+	  			cache: false,
+	  			contentType: false,
+	  			processData: false
+			});
+	}
+	
+	function getShopConnected( user_id ){
+		
+		var shop_connected = 0;
+		
+		var formData = new FormData();
+	    formData.append( 'user_id' , user_id );
+	    
+	    $.ajax({
+	  		url: 'http://www.dappoint.com/shopapp/php/shop-connected-app.php',
+	  		type: 'POST',
+	  		data: formData,
+	  		async: false,
+	  		success: function(data) {
+
+	  			var finaldata = JSON.parse(data);
+	  			
+	  			if( finaldata.OPERATION == 0){
+	  				
+	  				var searchData = finaldata.SEARCH_RESULT;
+	  				
+	  				$.each( searchData , function( index, value ){
+	  					shop_connected ++;	  					
+	  	  			});
+	  			}
+	  },
+	  cache: false,
+	  contentType: false,
+	  processData: false
+	});
+	    
+	    return shop_connected;
+	}
+	
+	</script>
+</body>
+
+</html>

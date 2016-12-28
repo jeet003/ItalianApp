@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>Italian App</title>
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link href="../css/style.css" rel="stylesheet">
+<link href="../css/animate.css" rel="stylesheet">
+<link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<script src="cordova.js" id="xdkJScordova_"></script>
+<script type="text/javascript" src="../js/jquery-1.12.3.js"></script>
+<script src="../js/app_1.js"></script>
+
+<style type="text/css">
+
+.col-centered {
+	margin: 0 auto;
+	display: table;
+}
+
+body {
+	background: #ffffff;
+}
+
+.nav>li>a:focus,.nav>li>a:hover {
+	text-decoration: none;
+	background: none;
+}
+
+.theme-config {
+	position: absolute;
+	top: 0px;
+	overflow: hidden;
+	left: 0;
+}
+
+.skin-setttings {
+	width: 220px;
+	margin-left: 0px;
+	background: #2f4050;
+}
+
+.img_css {
+	width: 38px;
+	height: 38px;
+}
+
+.cursor_pointer {
+	cursor: pointer;
+}
+
+.mg_top_20 {
+	margin-top: 20px;
+}
+
+.display_none {
+	display: none;
+}
+
+.min_height_50 {
+	min-height: 50px;
+}
+
+.mg_left_10 {
+	margin-left: 10px;
+}
+.page_header_icon {
+    font-size: 20px;
+    color: #FFFFFF;
+    margin: 15px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+#header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  min-height: 10%;
+  background: #6f2a5c;
+}
+</style>
+
+<script type="text/javascript" src="../js/common.js"></script>
+<script src="../js/jquery.mobile-1.4.5.js"></script>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+	   loadAppointmentDetails();
+	   
+	$(this).on( 'click' , '.confirm_app' , function(){
+
+		var appointment_id = $(this).attr('appointment_id');
+		var user_id = $(this).attr('user_id');
+		var shop_id = $(this).attr('shop_id');
+		
+		var formData = new FormData();
+		formData.append("appointment_id",appointment_id);
+		formData.append("user_id" , user_id);
+		formData.append("shop_id",shop_id);
+
+	    $.ajax({
+	  		url: 'http://www.dappoint.com/shopapp/php/confirmAppointment-app.php',
+	  		type: 'POST',
+	  		data: formData,
+	  		async: false,
+	  		success: function(data) {
+	  			location.reload();
+		  },
+	  cache: false,
+	  contentType: false,
+	  processData: false
+	});
+});
+	
+	$(this).on( 'click' , '.delete_app' , function(){
+		
+		var appointment_id = $(this).attr('appointment_id');
+		var user_id = $(this).attr('user_id');
+		var shop_id = $(this).attr('shop_id');
+		
+		var formData = new FormData();
+		formData.append("appointment_id",appointment_id);
+		formData.append("user_id" , user_id);
+		formData.append("shop_id",shop_id);
+
+	    $.ajax({
+	  		url: 'http://www.dappoint.com/shopapp/php/deleteAppointment-app.php',
+	  		type: 'POST',
+	  		data: formData,
+	  		async: false,
+	  		success: function(data) {
+	  			location.reload();
+		  },
+	  cache: false,
+	  contentType: false,
+	  processData: false
+	});
+		
+	});
+	
+	$(this).on( 'click' , '.postpone_app' , function(){
+		
+		var appointment_id = $(this).attr('appointment_id');
+		var user_id = $(this).attr('user_id');
+		var shop_id = $(this).attr('shop_id');
+		
+		var formData = new FormData();
+		formData.append("appointment_id",appointment_id);
+		formData.append("user_id" , user_id);
+		formData.append("shop_id",shop_id);
+
+	    $.ajax({
+	  		url: 'http://www.dappoint.com/shopapp/php/postponeAppointment-app.php',
+	  		type: 'POST',
+	  		data: formData,
+	  		async: false,
+	  		success: function(data) {
+	  			location.reload();
+		  },
+	  cache: false,
+	  contentType: false,
+	  processData: false
+	});
+
+	});
+});
+
+function loadAppointmentDetails(){
+	
+	var month = ['','January','February','March','April','May','June','July','August','September','October','November','December'];
+	var appointment_id = getQueryParam('appointment_id');
+	var formData = new FormData();
+	
+	formData.append("appointment_id",appointment_id);
+
+    $.ajax({
+  		url: 'http://www.dappoint.com/shopapp/php/appointmentDetails-app.php',
+  		type: 'POST',
+  		data: formData,
+  		async: false,
+  		success: function(data) {
+
+  			var finaldata = JSON.parse(data);
+  			
+  			if( finaldata.OPERATION == 0){
+
+  				var value = finaldata.SEARCH_RESULT;
+  				
+  					var user_apnt_time = value.user_apnt_time;
+					var times = user_apnt_time.split(':');
+					
+					var date = value.user_apnt_dt;
+					
+					var date_split = date.split('-');
+					
+					
+					
+  					$('.date-time').html( date_split[2] + ' ' + month[ date_split[1] ] + ' ' + date_split[0] + ' - ' + times[0] + ':' + times[1]  );
+  					$('.shop_name').html( value.shop_name1 );
+  					$('.shop_desc').html( value.shop_desc );
+  					$('.doctor_name').html( value.first_line_activity ) 
+  					$('.shop_phone').html( value.Shop_Phone1 );
+  					$('.call_to_shop').attr( 'href' , 'tel:' + value.Shop_Phone1 );
+  					
+  					if( value.Shop_Web_Page.search('http://') == -1 ){
+  						$('.web_url').attr( 'href' , 'http://' + value.Shop_Web_Page );	
+  					}
+  					else{
+  						$('.web_url').attr( 'href' , value.Shop_Web_Page );
+  					}
+  					
+  					$('.facebook_url').attr( 'href' , value.Shop_FB_Page );
+  					$('.shop_city').html( value.Shop_City );
+  					$('.shop_open_hrs').html( value.shop_open_hrs );
+  					
+  					$('.delete_app').attr('user_id' , value.user_id );
+  					$('.delete_app').attr('shop_id' , value.shop_id );
+  					$('.delete_app').attr('appointment_id' , appointment_id );
+
+  					$('.postpone_app').attr('user_id' , value.user_id );
+  					$('.postpone_app').attr('shop_id' , value.shop_id );
+  					$('.postpone_app').attr('appointment_id' , appointment_id );
+  					
+  					$('.confirm_app').attr('user_id' , value.user_id );
+  					$('.confirm_app').attr('shop_id' , value.shop_id );
+  					$('.confirm_app').attr('appointment_id' , appointment_id );
+
+  					var relativeUrl = null;
+  					
+  					if( ! jQuery.isEmptyObject( value.shop_img_url )){
+  		                var start_index = value.shop_img_url.indexOf('upload');
+  		                var end_index = value.shop_img_url.length;
+  		                relativeUrl = value.shop_img_url.substring(start_index,end_index);
+  					}
+
+	                if( ! jQuery.isEmptyObject( relativeUrl ) ){
+	                	$('.profile_img').attr("src" , "http://www.dappoint.com/shopapp/" + relativeUrl );
+	                }
+  			}
+  },
+  cache: false,
+  contentType: false,
+  processData: false
+});
+
+}
+</script>
+</head>
+
+<body>
+
+	<!-- fadeInLeft animated -->
+
+	<div class="container">
+	<div class="row">
+		<div class="theme-config">
+			<div class="theme-config-box show">
+				<div class="skin-setttings" id="menu-details"
+					style="display: none; position: fixed; height: 100%;">
+					
+        <div style="width: 100%;">
+        <img alt="image" class="img-circle my-profile-image" src="../img/profile.png" style="width: 120px;margin-left: 50px;margin-top: 15px;">
+        <span class="clear" style="color: #fff;margin-left: 65px;font-size: 15px;"> <span class="block m-t-xs"> <strong class="font-bold client_name"></strong>
+        </div>
+        	
+		<ul class="nav metismenu" style="margin-top: 25px;">
+                <li >
+                    <a class="nav_menu" id="my-account" style="font-size: 15px;font-weight: bold;"><i style="color: #319c8e;" class="fa fa-user"></i> <span class="nav-label">MY ACCOUNT</span> <span class="fa fa-angle-right pull-right"></span></a>
+                </li>
+                <li>
+                    <a class="nav_menu" id="shop-connected" style="font-size: 15px;font-weight: bold;"><i style="color: #319c8e;" class="fa fa-connectdevelop"></i> <span class="nav-label">SHOP CONNECTED</span><span class="fa fa-angle-right pull-right"></span></a>
+                </li>
+                <li>
+                    <a class="nav_menu" id="barCode" style="font-size: 15px;font-weight: bold;"><i style="color: #319c8e;"  class="fa fa-barcode "></i> <span class="nav-label">BARCODE</span><span class="fa fa-angle-right pull-right"></span></a>
+                </li>
+                <li>
+                    <a class="nav_menu" id="my-appointment" style="font-size: 15px;font-weight: bold;"><i style="color: #319c8e;" class="fa fa-book"></i> <span class="nav-label">APPOINMENTS</span> <span class="badge label label-info appointment_count"></span><span class="fa fa-angle-right pull-right"></span></a>
+                </li>
+                <li>
+                    <a class="nav_menu" url="../index.html" style="font-size: 15px;font-weight: bold;"><i style="color: #319c8e;" class="fa fa-sign-out"></i> <span class="nav-label">Logout</span></a>
+                </li>
+
+            </ul>        
+            </div>
+        </div>
+	</div>
+
+<div id="header">
+ <i class="fa fa-list page_header_icon" id="mymenu"></i>
+ <a class="fa fa-plus-circle pull-right nav_menu barcode-menu page_header_icon"></a>
+</div>
+		<div class="col-lg-12" style="margin-top: 15%;">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="row">
+						<div class="feed-activity-list">
+
+							<div class="feed-element"
+								style="background-color: #44d03b; padding: 25px;">
+								<div class="media-body col-centered">
+									<strong style="color: white;font-size: 15px;margin-left: 30px;">CONFIRMED</strong> <br> <strong class="date-time"
+										style="color: white;"></strong>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-12">
+					<div class="row">
+						<div class="col-lg-12" style="background: #6b656b;padding: 11px;">
+							<a class="fa fa-phone-square pull-left call_to_shop" style="color: #366f36;font-size: 40px;color: white;margin-top: -5px;"></a>
+							<a class="web_url" style="font-size: 20px;font-weight: bold;margin-left: 33%;color: white;">www</a>
+							<a class="fa fa-facebook-square pull-right facebook_url" style="color: #657598;font-size: 40px;color: white;margin-top: -5px;"></a>
+						</div>					
+					</div>
+				</div>
+
+				<div class="col-lg-12">
+					<div class="row">
+    	<div class="feed-element" >
+			<div class="appoinment-details " >
+    				<a class="pull-left" style="margin-top: 10px;padding: 5px;">
+         				<img alt="image" class="img-circle profile_img" src="../img/default.jpg" style="width: 70px;height: 70px;">
+         			</a>
+            	<div class="media-body ">
+            	<br>
+	                        <span class="shop_name" style="font-size: 14px;color: #050505;font-weight: bold;"></span>
+							<br>
+	                        <small class="text-muted shop_desc"></small>
+	                        <br>
+							<span class="doctor_name" style="font-size: 13px;color: black;" ></span>
+            	</div>
+    	</div> 
+
+						</div>
+					</div>
+
+				</div>
+				<div class="col-lg-12">
+					<div class="row">
+						<div class="ibox-content">
+
+
+							<div class="feed-element">
+								<div class="media-body ">
+									<strong style="font-size: 15px;" class="shop_name"></strong><br> <small
+										style="font-size: 15px;" class="text-muted">Address : <span class="shop_desc"></span></small> <br>
+									<small style="font-size: 15px;" class="text-muted">City Name : <span class="shop_city"></span></small><br> <small
+										style="font-size: 15px;" class="text-muted">Telephone Number : <span class="shop_phone"></span></small><br>
+									<small style="font-size: 15px;" class="text-muted">Open : <span class="shop_open_hrs"></span></small><br>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<div class="col-lg-12">
+					<div class="row">
+						<div class="ibox-content">
+
+
+							<div class="feed-element"
+								style="padding: 10px; margin-left: 15px;">
+								<div class="media-body ">
+									<div
+										style="width: 33%; float: left; border-right: 2px solid #d5cece; padding: 5px;">
+										<i class="fa fa-check-circle "
+											style="color: green; font-size: 40px; padding: 10px;"></i>
+										<div style="clear: both;"></div>
+										<span style="color: green; font-weight: bold;" class="confirm_app">I
+											CONFIRM</span><span></span>
+									</div>
+									<div style="width: 33%; float: left; padding: 5px;">
+										<i class="fa fa-phone-square "
+											style="color: red; font-size: 40px; padding: 10px;"></i>
+										<div style="clear: both;"></div>
+										<span style="color: red; font-weight: bold;" class="postpone_app">POSTPONE,
+											CALL ME</span><span></span>
+									</div>
+									<div style="width: 33%; float: left; padding: 5px;">
+										<i class="fa fa-phone-square "
+											style="color: red; font-size: 40px; padding: 10px;"></i>
+										<div style="clear: both;"></div>
+										<span style="color: red; font-weight: bold;" class="delete_app">POSTPONE,
+											I WILL CALL YOU LATER</span><span></span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-12">
+					<div class="row">
+						<div class="feed-activity-list">
+
+							<div class="feed-element"
+								style="background-color: red; padding: 15px;">
+								<div class="media-body col-centered">
+									<strong style="color: white;" class="delete_app">I NEVER ASKED FOR IT</strong>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+	</div>
+</body>
+
+</html>
