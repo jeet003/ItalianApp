@@ -372,13 +372,7 @@ if(!jQuery.isEmptyObject(pageMessage))
 	    	var url='https://www.googleapis.com/plus/v1/people/me?access_token='+token+'&key='+'AIzaSyCv1mFzPS6dPszP3o0aOLLTPc4P1Csgv5g';
 	        
 	    	$.get(url,function(response){
-	    		
-	    		alert(response.email);
-	    		alert(response.imageUrl);
-	    		alert(response.givenName);
-	    		alert(response.familyName);
-	    		
-	            socialLogin( response.id , response.displayName, '' );
+	    		socialLogin( response.id , response.displayName, '' );
 	        })
 	        
 	    }, function(error, response){

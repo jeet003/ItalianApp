@@ -15,5 +15,7 @@
 <intelxdk:plugin intelxdk:name="OneSignal Android Dependencies" intelxdk:value="onesignal-cordova-dependencies-compat" intelxdk:version="1.0.0" intelxdk:checksum="9a4a5206" intelxdk:type="file"/>
 <intelxdk:plugin intelxdk:name="Notification" intelxdk:value="cordova-plugin-dialogs" intelxdk:version="1.2.1" intelxdk:checksum="2948bc11" intelxdk:type="file"/>
 <intelxdk:plugin intelxdk:name="Device" intelxdk:value="cordova-plugin-device" intelxdk:version="1.1.2" intelxdk:checksum="2373ccea" intelxdk:type="file"/>
+<intelxdk:plugin intelxdk:name="Google SignIn" intelxdk:value="cordova-plugin-googleplus" intelxdk:version="5.1.1" intelxdk:checksum="cb3f8a4c" intelxdk:type="file">
+<intelxdk:param intelxdk:name="REVERSED_CLIENT_ID" intelxdk:value="827360061072-4m6tc6cc6rf1gk0g10570ed38pp30f8o.apps.googleusercontent.com"/></intelxdk:plugin>
 <!--creationInfo:{"src":"","projectTypeName":"com.intel.xdk.projecttype.jsapp"}-->
 <preference name="debuggable" value="false"/></widget>
