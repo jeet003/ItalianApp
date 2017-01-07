@@ -18,7 +18,9 @@
                if (response.status === 'connected') {
                   facebookConnectPlugin.api('/me/?fields=id,name,email', null,
                      function(response) {
+
                 	  socialLogin( response.id , response.name, response.email , 'F' , 'https://graph.facebook.com/'+response.id+'/picture?type=large');
+
                      }
                   );
                }
@@ -31,17 +33,21 @@
           
          facebookConnectPlugin.api('/me/?fields=id,name,email', null,
             function(response) {
+
        	  
        	
         	 	socialLogin( response.id , response.name, response.email , 'F' , 'https://graph.facebook.com/'+response.id+'/picture?type=large');
+
             }
          );
       }
    },
    function (response) {
+
  	  
 	  
 	   socialLogin( response.id , response.name, response.email , 'F' , 'https://graph.facebook.com/'+response.id+'/picture?type=large');
+
 	 }
 );
          return false;

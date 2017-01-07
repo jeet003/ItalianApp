@@ -1,54 +1,22 @@
 {
+    "cordova-plugin-device": {
+        "source": {
+            "type": "local",
+            "path": "/home/jeet/intel/XDK/xdk/components/server/cordova/cordova-plugins/cordova-plugin-device"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
     "cordova-plugin-facebook4": {
         "source": {
             "type": "registry",
-            "id": "cordova-plugin-facebook4@1.7.1"
+            "id": "cordova-plugin-facebook4@1.7.4"
         },
         "is_top_level": true,
         "variables": {
             "APP_ID": "1190601210994596",
             "APP_NAME": "dappointtest"
         }
-    },
-    "cordova-plugin-inappbrowser": {
-        "source": {
-            "type": "local",
-            "path": "C:\\Users\\Arun1989\\AppData\\Local\\Intel\\XDK\\xdk\\components\\server\\cordova\\cordova-plugins\\cordova-plugin-inappbrowser"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
-    "onesignal-cordova-plugin-pgb-compat": {
-        "source": {
-            "type": "local",
-            "path": "C:\\Users\\Arun1989\\Desktop\\plugin\\plugin\\OneSignal-Cordova-SDK"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
-    "onesignal-cordova-dependencies-compat": {
-        "source": {
-            "type": "local",
-            "path": "C:\\Users\\Arun1989\\Desktop\\plugin\\plugin\\OneSignal-Cordova-Dependencies-Compat"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
-    "cordova-plugin-dialogs": {
-        "source": {
-            "type": "local",
-            "path": "C:\\Users\\Arun1989\\AppData\\Local\\Intel\\XDK\\xdk\\components\\server\\cordova\\cordova-plugins\\cordova-plugin-dialogs"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
-    "cordova-plugin-device": {
-        "source": {
-            "type": "local",
-            "path": "C:\\Users\\Arun1989\\AppData\\Local\\Intel\\XDK\\xdk\\components\\server\\cordova\\cordova-plugins\\cordova-plugin-device"
-        },
-        "is_top_level": true,
-        "variables": {}
     },
     "cordova-plugin-googleplus": {
         "source": {
@@ -58,7 +26,7 @@
         },
         "is_top_level": true,
         "variables": {
-            "REVERSED_CLIENT_ID": "https://github.com/EddyVerbruggen/cordova-plugin-googleplus.git"
+            "REVERSED_CLIENT_ID": "com.googleusercontent.apps.87974589668-19vrrg3j8nra94ntkrijui7pheli9a08"
         }
     }
 }

@@ -5,7 +5,7 @@
       "projectTypeName": "com.intel.xdk.projecttype.jsapp",
       "src": "",
       "projectGuid": "2644031d-eab6-4910-97ea-4a04cea4d9a7",
-      "lastModifiedDate": 1484071372801,
+      "lastModifiedDate": 1484210899580,
       "creationDate": 1481395236952
     },
     "gameAssetDirectory": "asset",
@@ -44,9 +44,9 @@
           "android-signed": true
         },
         "isActive_": true,
-        "certificateId_": "4JmYFqdhUEmn9d8qPZjCLw2",
+        "certificateId_": "siwgg9yV1US0qvMi-Xm8IA2",
         "appName_": "dappoint",
-        "appID_": "com.dappoint.com",
+        "appID_": "com.diphone.com",
         "appAccess_": {
           "mode": "whitelist",
           "network": [
@@ -78,9 +78,9 @@
           "ios-configuration": "adhoc"
         },
         "isActive_": true,
-        "certificateId_": "",
-        "appName_": "dappoint3",
-        "appID_": "not.yet.specified",
+        "certificateId_": "1Kz33gp07k-XsHhbHM3DCA2",
+        "appName_": "dappoint",
+        "appID_": "com.diphone.com",
         "appAccess_": {
           "mode": "whitelist",
           "network": [
@@ -93,8 +93,18 @@
         "icons_": [],
         "splashes_": [],
         "appVersion_": "0.0.1",
-        "iosProvs_": [],
-        "cordovaCLIVersion_": "6.2.0"
+        "iosProvs_": [
+          {
+            "relPath": "package-assets/adhoc_iphone(2).mobileprovision",
+            "type": "adhoc"
+          },
+          {
+            "relPath": "package-assets/appstore_iphone(2).mobileprovision",
+            "type": "production"
+          }
+        ],
+        "cordovaCLIVersion_": "6.2.0",
+        "appAuthor_": "jeet"
       },
       "Windows8": {
         "platform_": "windows8",
@@ -103,7 +113,7 @@
         "preferences_": {},
         "isActive_": true,
         "certificateId_": "",
-        "appName_": "dappoint3",
+        "appName_": "dappoint",
         "appID_": "not.yet.specified",
         "appAccess_": {
           "mode": "whitelist",
@@ -187,46 +197,6 @@
     "cordovaPluginsDirectory": "plugins",
     "cordovaPlugins": [
       {
-        "id": "cordova-plugin-facebook4",
-        "name": "Facebook Connect",
-        "version": "1.7.1",
-        "originType": "cordova.io",
-        "origin": "cordova-plugin-facebook4",
-        "gitref": "",
-        "paramvals": {
-          "APP_ID": "1190601210994596",
-          "APP_NAME": "dappointtest"
-        },
-        "sourceLocation": "plugins/cordova-plugin-facebook4",
-        "selectedState": "Included",
-        "checksum": "5a1597eb",
-        "dependsOn": [],
-        "topLevel": true,
-        "permissions": {},
-        "description": "\n      This is the official plugin for Facebook in Apache Cordova/PhoneGap!\n\n      The Facebook plugin for Apache Cordova allows you to use the same JavaScript code in your\n      Cordova application as you use in your web application.\n      Docs: https://github.com/Wizcorp/phonegap-facebook-plugin.\n    ",
-        "data": {},
-        "dependedBy": []
-      },
-      {
-        "id": "cordova-plugin-inappbrowser",
-        "name": "InAppBrowser",
-        "version": "1.4.0",
-        "originType": "cordova.io",
-        "origin": "cordova-plugin-inappbrowser",
-        "gitref": "",
-        "paramvals": {},
-        "sourceLocation": "plugins/cordova-plugin-inappbrowser",
-        "selectedState": "Included",
-        "checksum": "f88bc51f",
-        "dependsOn": [],
-        "topLevel": true,
-        "cordovaVersion": ">=3.1.0",
-        "permissions": {},
-        "description": "Cordova InAppBrowser Plugin",
-        "data": {},
-        "dependedBy": []
-      },
-      {
         "id": "onesignal-cordova-plugin-pgb-compat",
         "name": "OneSignal Push Notifications PGB Compat",
         "version": "2.0.10",
@@ -238,7 +208,7 @@
         "selectedState": "Included",
         "checksum": "b0b029a",
         "dependsOn": [],
-        "topLevel": true,
+        "topLevel": false,
         "cordovaVersion": ">=3.3.0",
         "author": "Josh Kasten",
         "permissions": {
@@ -284,8 +254,7 @@
         "selectedState": "Included",
         "checksum": "9a4a5206",
         "dependsOn": [],
-        "topLevel": true,
-        "cordovaVersion": ">=3.1.0",
+        "topLevel": false,
         "author": "Josh Kasten",
         "permissions": {},
         "description": "This addes required Android dependencies needed by OneSignal. Designed for Intel XDK to be used with onesignal-cordova-plugin-pgb-compat. Use onesignal-cordova-plugin instead if you not using Intel XDK.",
@@ -305,7 +274,7 @@
         "selectedState": "Included",
         "checksum": "2948bc11",
         "dependsOn": [],
-        "topLevel": true,
+        "topLevel": false,
         "permissions": {},
         "description": "Cordova Notification Plugin",
         "data": {},
@@ -330,33 +299,25 @@
         "dependedBy": []
       },
       {
-        "id": "cordova-plugin-googleplus",
-        "name": "Google SignIn",
-        "version": "5.1.1",
-        "originType": "repo",
-        "origin": "https://github.com/EddyVerbruggen/cordova-plugin-googleplus.git",
+        "id": "cordova-plugin-facebook4",
+        "name": "Facebook Connect",
+        "version": "1.7.4",
+        "originType": "cordova.io",
+        "origin": "cordova-plugin-facebook4",
         "gitref": "",
-        "subdir": ".",
         "paramvals": {
-          "REVERSED_CLIENT_ID": "https://github.com/EddyVerbruggen/cordova-plugin-googleplus.git"
+          "APP_ID": "1190601210994596",
+          "APP_NAME": "dappointtest"
         },
-        "sourceLocation": "plugins/cordova-plugin-googleplus",
+        "sourceLocation": "plugins/cordova-plugin-facebook4",
         "selectedState": "Included",
-        "checksum": "cb3f8a4c",
+        "checksum": "bdc2021e",
         "dependsOn": [],
         "topLevel": true,
-        "cordovaVersion": ">=3.5.0",
-        "author": "Eddy Verbruggen",
-        "permissions": {
-          "android:name": [
-            "android.permission.GET_ACCOUNTS",
-            "android.permission.USE_CREDENTIALS"
-          ]
-        },
-        "description": "Use your Google account to authenticate with the app.",
+        "permissions": {},
+        "description": "\n      This is the official plugin for Facebook in Apache Cordova/PhoneGap!\n\n      The Facebook plugin for Apache Cordova allows you to use the same JavaScript code in your\n      Cordova application as you use in your web application.\n      Docs: https://github.com/Wizcorp/phonegap-facebook-plugin.\n    ",
         "data": {},
-        "dependedBy": [],
-        "custom": "true"
+        "dependedBy": []
       }
     ],
     "sourceDirectory": "www",

@@ -13,7 +13,7 @@
     <link href="../css/animate.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/swiper.min.css">
     <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    
+
 <style type="text/css">
 
 body{
@@ -29,6 +29,7 @@ background: #ffffff;
     top: 0px;
     overflow: hidden;
         left: 0;
+    bottom: 0;
 }
 
 .skin-setttings {
@@ -133,13 +134,13 @@ font-weight: bold;
     <div class="theme-config" >
     <div class="theme-config-box show">
         <div class="skin-setttings" id="menu-details" style="display:none;position: fixed;height: 100%;">
-        
-        
+
+
         <div style="width: 100%;">
         <img alt="image" class="img-circle my-profile-image" src="../img/profile.png" style="width: 120px;margin-left: 50px;margin-top: 15px;">
         <span class="clear" style="color: #fff;margin-left: 65px;font-size: 15px;"> <span class="block m-t-xs"> <strong class="font-bold client_name"></strong>
         </div>
-        	
+
 		<ul class="nav metismenu" style="margin-top: 25px;">
                 <li >
                     <a class="nav_menu" id="my-account" style="font-size: 15px;font-weight: bold;"><i style="color: #319c8e;" class="fa fa-user"></i> <span class="nav-label">MY ACCOUNT</span> <span class="fa fa-angle-right pull-right"></span></a>
@@ -157,7 +158,7 @@ font-weight: bold;
                     <a class="nav_menu" url="../index.html" style="font-size: 15px;font-weight: bold;"><i style="color: #319c8e;" class="fa fa-sign-out"></i> <span class="nav-label">Logout</span></a>
                 </li>
 
-            </ul>        
+            </ul>
             </div>
         </div>
 	</div>
@@ -166,12 +167,12 @@ font-weight: bold;
  <i class="fa fa-list page_header_icon" id="mymenu"></i>
  <a class="fa fa-plus-circle nav_menu pull-right barcode-menu page_header_icon"></a>
 </div>
-	
-<div style="margin-top: 15%;">	
+
+<div style="margin-top: 15%;">
 	<div class="col-lg-12 no_app" style="color: red;margin-top: 80px;font-size: 20px;display: none;">
 	No shop connected
 	</div>
-							
+
 	<div class="col-lg-12 day_1 fav_shop_details" >
 		<div class="row">
 			<div class="ibox-title" style="background: #6f2a5c;color: #fff;font-size: 15px;">
@@ -188,14 +189,16 @@ font-weight: bold;
 			<div class="details"></div>
 		</div>
 	</div>
-	
+
 </div>
 </div>
+
 	
 	<script src="../cordova.js" id="xdkJScordova_"></script>
+
 	<script type="text/javascript" src="../js/jquery-1.12.3.js"></script>
 	<script src="../js/app_1.js"></script>
-	
+
 <script src="../js/swiper.min.js"></script>
 <script type="text/javascript" src="../js/common.js"></script>
 <script src="../js/jquery.mobile-1.4.5.js"></script>
@@ -203,11 +206,11 @@ font-weight: bold;
 <script type="text/javascript">
 
 function getShopConnected(){
-	
+
 	var formData = new FormData();
 	var user_id = getQueryParam('client_id');
     formData.append( 'user_id' , user_id );
-    
+
     $.ajax({
   		url: 'http://www.dappoint.com/shopapp/php/shop-connected-app.php',
   		type: 'POST',
@@ -216,20 +219,20 @@ function getShopConnected(){
   		success: function(data) {
 
   			var finaldata = JSON.parse(data);
-  			
+
   			if( finaldata.OPERATION == 0){
-  				
+
   				var searchData = finaldata.SEARCH_RESULT;
-  				
+
   				var appointment_count = 0;
-  				
+
   				$.each( searchData , function( index, value ){
-  					
+
   					var shop_connected_clone = $('.shop_connected_clone').clone();
   					$( shop_connected_clone ).removeClass('shop_connected_clone');
-  					
+
   					var relativeUrl = null;
-  					
+
   					if( ! jQuery.isEmptyObject( value.shop_image )){
   		                var start_index = value.shop_image.indexOf('upload');
   		                var end_index = value.shop_image.length;
@@ -239,9 +242,9 @@ function getShopConnected(){
 	                if( ! jQuery.isEmptyObject( relativeUrl ) ){
 	                	$( shop_connected_clone ).find('.profile_img').attr("src" , "http://www.dappoint.com/shopapp/" + relativeUrl );
 	                }
-  					
+
 	                var insertDate = value.insert_date.split('-');
-	                
+
 	                $( shop_connected_clone ).find('.shop_connected_date').html( insertDate[2] + '-' + insertDate[1] + '-' + insertDate[0] );
   					$( shop_connected_clone ).find('.shop_name').html( value.shop_name );
   					$( shop_connected_clone ).find('.shop_desc').html( value.shop_desc );
@@ -252,15 +255,15 @@ function getShopConnected(){
 
   					$( shop_connected_clone ).find('.disconnect_shop').attr('shop_id', value.shop_id);
   					$( shop_connected_clone ).find('.disconnect_shop').attr('user_id', user_id );
-  					
+
   					$( shop_connected_clone ).removeClass('display_none');
-  					
+
   					if( value.fav_flag === 'Y'){
   						$( shop_connected_clone ).find('.fav_shop_icon').css('color','#fddb32');
   						$('.fav_shop_details').find('.details').append( shop_connected_clone.html() );
   					}
-  					
-  					$('.shop_details').find('.details').append( shop_connected_clone.html() );  						
+
+  					$('.shop_details').find('.details').append( shop_connected_clone.html() );
   	  			});
   			}
   },
@@ -271,40 +274,40 @@ function getShopConnected(){
 }
 
 $(document).ready(function(){
-	
+
 	getShopConnected();
-	
+
 	var allshopcount = $('.shop_details').find('.details').find('div').length;
 	var favshopcount = $('.fav_shop_details').find('.details').find('div').length;
-	
+
 	if( favshopcount == 0 ){
 		$('.fav_shop_details').hide();
 	}
 	if( allshopcount == 0 ){
 		$('.shop_details').hide();
 	}
-	
+
 	if( allshopcount == 0 ){
 		$('.no_app').show();
 	}
-	
+
 	var swiper = new Swiper('.swiper-container', {
         loop: true
     });
-	
+
 	$(this).on( 'click' , '.fav_shop_icon' , function(){
-		
+
 		var user_id = $(this).attr('user_id');
 		var shop_id = $(this).attr('shop_id');
 		var status = $(this).attr('status');
-		
+
 		if( status == 'Y'){
 			status = 'N';
 		}
 		else{
 			status = 'Y';
 		}
-		
+
 		var formData = new FormData();
 		formData.append("user_id" , user_id);
 		formData.append("shop_id",shop_id);
@@ -322,20 +325,20 @@ $(document).ready(function(){
 	  contentType: false,
 	  processData: false
 	});
-		
+
 	});
-	
+
 	$(this).on( 'click' , '.disconnect_shop' , function(){
-		
+
 		var user_id = $(this).attr('user_id');
 		var shop_id = $(this).attr('shop_id');
-		
+
 		var formData = new FormData();
 		formData.append("user_id" , user_id);
 		formData.append("shop_id",shop_id);
 
 		alert();
-		
+
 	    $.ajax({
 	  		url: 'http://www.dappoint.com/shopapp/php/removeShop-app.php',
 	  		type: 'POST',
@@ -348,7 +351,7 @@ $(document).ready(function(){
 	  contentType: false,
 	  processData: false
 	});
-		
+
 	});
 });
 
@@ -370,17 +373,18 @@ $(document).ready(function(){
 	                        <br>
 	                        <span class="label-green">CONNECTED</span>
 	                        </span>
-	                        
-	                        <span class="pull-left" style="margin-top: 20px;">
+
+	                        <span class="pull-left" style="margin-top: 12px;">
 	                        <span class="shop_name" style="font-size: 14px;color: #050505;font-weight: bold;" ></span>
 							<br>
 	                        <small class="text-muted shop_desc"></small>
 	                        <br>
-							<span class="shop_city" style="font-size: 13px;color: black;" ></span>
+                          <br>
+							<span class="shop_city" style="font-size: 14px;color: black;" ></span>
 							</span>
 						</div>
                     </div>
-				</div>                                                 
+				</div>
             </div>
    			<div class="ibox-content swiper-slide swiper-slide-active">
 				<div class="feed-element appoinment" >
@@ -394,13 +398,13 @@ $(document).ready(function(){
         				<a class="pull-left" style="margin-top: 10px;padding: 5px;">
             				<img alt="image" class="img-circle profile_img" src="../img/default.jpg" style="width: 70px;height: 70px;">
             			</a>
-                        </div>													
-                    </div>   
-                 </div>                                                 
+                        </div>
+                    </div>
+                 </div>
               </div>
            </div>
-           </div>  
-           </div>  
+           </div>
+           </div>
            </div>
 
 </body>

@@ -18,8 +18,8 @@
 	<script src="../cordova.js" id="xdkJScordova_"></script>
 	<script type="text/javascript" src="../js/jquery-1.12.3.js"></script>
 	<script src="../js/app_1.js"></script>
-	
-    
+
+
 <style type="text/css">
 
 .nav>li>a:focus, .nav>li>a:hover {
@@ -32,6 +32,7 @@
     top: 0px;
     overflow: hidden;
         left: 0;
+    bottom: 0;
 }
 
 .skin-setttings {
@@ -68,7 +69,7 @@ margin-left: 10px;
   left: 0;
   z-index: 999;
   width: 100%;
-  min-height: 30%;
+  min-height: 25%;
   background: #6f2a5c;
 }
 
@@ -83,7 +84,7 @@ margin-left: 10px;
     font-size: 20px;
     color: #FFFFFF;
     margin: 15px;
-    margin-top: 10px;
+    margin-top: 20px;
     cursor: pointer;
 }
 
@@ -93,22 +94,22 @@ margin-left: 10px;
   left: 0;
   z-index: 999;
   width: 100%;
-  min-height: 30%;
+  min-height: 25%;
   background: #6f2a5c;
 }
 
  html, body {
     margin:0;
     padding:0;
-    height:100%; 
+    height:100%;
     background: none;
- } 
- 
+ }
+
   #footer {
     position: fixed;
     bottom: 0;
     width: 100%;
-    min-height: 30%;
+    min-height: 25%;
     background: #6f2a5c;
 }
 
@@ -127,7 +128,7 @@ font-size: 10px;
 .barCode_css{
     position: absolute;
     width: 100%;
-    height: 20%;
+    height: 25%;
     top: 30%;
 }
 
@@ -160,18 +161,18 @@ div.container {
 	        });
 	  generateBarcode();
    });
-   
+
       function generateBarcode(){
         var value = $('.qrcode').val();
-        
+
         var btype = "code39";
         var renderer = "css";
-        
+
 		var quietZone = false;
         if ($("#quietzone").is(':checked') || $("#quietzone").attr('checked')){
           quietZone = true;
         }
-		
+
         var settings = {
           output:renderer,
           bgColor: $("#bgColor").val(),
@@ -195,17 +196,17 @@ div.container {
           $("#barcodeTarget").html("").show().barcode(value, btype, settings);
         }
       }
-          
+
       function showConfig1D(){
         $('.config .barcode1D').show();
         $('.config .barcode2D').hide();
       }
-      
+
       function showConfig2D(){
         $('.config .barcode1D').hide();
         $('.config .barcode2D').show();
       }
-      
+
       function clearCanvas(){
         var canvas = $('#canvasTarget').get(0);
         var ctx = canvas.getContext('2d');
@@ -216,10 +217,10 @@ div.container {
         ctx.clearRect (0, 0, canvas.width, canvas.height);
         ctx.strokeRect (0, 0, canvas.width, canvas.height);
       }
-      
+
     </script>
   </head>
-  
+
 <body>
 
 
@@ -227,13 +228,13 @@ div.container {
     <div class="theme-config" >
     <div class="theme-config-box show">
         <div class="skin-setttings" id="menu-details" style="display:none;position: fixed;height: 100%;">
-         	
-        
+
+
         <div style="width: 100%;">
         <img alt="image" class="img-circle my-profile-image" src="../img/profile.png" style="width: 120px;margin-left: 50px;margin-top: 15px;">
         <span class="clear" style="color: #fff;margin-left: 65px;font-size: 15px;"> <span class="block m-t-xs"> <strong class="font-bold client_name"></strong>
         </div>
-        	
+
 		<ul class="nav metismenu" style="margin-top: 25px;" >
                 <li>
                     <a class="nav_menu" id="my-account" style="font-size: 15px;font-weight: bold;"><i style="color: #319c8e;" class="fa fa-user"></i> <span class="nav-label">MY ACCOUNT</span> <span class="fa fa-angle-right pull-right"></span></a>
@@ -251,7 +252,7 @@ div.container {
                     <a class="nav_menu" url="../index.html" style="font-size: 15px;font-weight: bold;"><i style="color: #319c8e;" class="fa fa-sign-out"></i> <span class="nav-label">Logout</span></a>
                 </li>
 
-            </ul>        
+            </ul>
             </div>
         </div>
 </div>
@@ -267,11 +268,11 @@ div.container {
 
 <div id="footer">
 <br>
+
+<span class="client_details client_name"></span>
 <br>
-<span class="client_details client_name"></span> 
-<br>
-<br>
-<span class="client_email client_details_small"></span> 
+
+<span class="client_email client_details_small"></span>
 <br>
 <span class="client_phone client_details_small"></span>
 <br>

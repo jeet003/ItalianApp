@@ -7,14 +7,6 @@
         "files": {}
     },
     "installed_plugins": {
-        "cordova-plugin-facebook4": {
-            "APP_ID": "1190601210994596",
-            "APP_NAME": "dappointtest",
-            "PACKAGE_NAME": "HelloCordova"
-        },
-        "cordova-plugin-inappbrowser": {
-            "PACKAGE_NAME": "HelloCordova"
-        },
         "onesignal-cordova-plugin-pgb-compat": {
             "PACKAGE_NAME": "HelloCordova"
         },
@@ -27,9 +19,24 @@
         "cordova-plugin-device": {
             "PACKAGE_NAME": "HelloCordova"
         },
+        "cordova-plugin-facebook4": {
+            "APP_ID": "1190601210994596",
+            "APP_NAME": "dappointtest",
+            "PACKAGE_NAME": "HelloCordova"
+        },
         "cordova-plugin-googleplus": {
             "PACKAGE_NAME": "HelloCordova"
         }
     },
-    "dependent_plugins": {}
+    "dependent_plugins": {
+        "cordova-plugin-dialogs": {
+            "PACKAGE_NAME": "HelloCordova"
+        },
+        "onesignal-cordova-dependencies-compat": {
+            "PACKAGE_NAME": "HelloCordova"
+        },
+        "onesignal-cordova-plugin-pgb-compat": {
+            "PACKAGE_NAME": "HelloCordova"
+        }
+    }
 }

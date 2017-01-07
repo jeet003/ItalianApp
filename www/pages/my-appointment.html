@@ -12,7 +12,7 @@
     <link href="../css/animate.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/swiper.min.css">
     <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    
+
 <style type="text/css">
 
 body{
@@ -28,6 +28,7 @@ background: #ffffff;
     top: 0px;
     overflow: hidden;
         left: 0;
+    bottom: 0;
 }
 
 .skin-setttings {
@@ -132,13 +133,13 @@ font-weight: bold;
     <div class="theme-config" >
     <div class="theme-config-box show">
         <div class="skin-setttings" id="menu-details" style="display:none;position: fixed;height: 100%;">
-        
-        
+
+
         <div style="width: 100%;">
         <img alt="image" class="img-circle my-profile-image" src="../img/profile.png" style="width: 120px;margin-left: 50px;margin-top: 15px;">
         <span class="clear" style="color: #fff;margin-left: 65px;font-size: 15px;"> <span class="block m-t-xs"> <strong class="font-bold client_name"></strong>
         </div>
-        	
+
 		<ul class="nav metismenu" style="margin-top: 25px;">
                 <li >
                     <a class="nav_menu" id="my-account" style="font-size: 15px;font-weight: bold;"><i style="color: #319c8e;" class="fa fa-user"></i> <span class="nav-label">MY ACCOUNT</span> <span class="fa fa-angle-right pull-right"></span></a>
@@ -156,7 +157,7 @@ font-weight: bold;
                     <a class="nav_menu" url="../index.html" style="font-size: 15px;font-weight: bold;"><i style="color: #319c8e;" class="fa fa-sign-out"></i> <span class="nav-label">Logout</span></a>
                 </li>
 
-            </ul>        
+            </ul>
             </div>
         </div>
 	</div>
@@ -165,12 +166,12 @@ font-weight: bold;
  <i class="fa fa-list page_header_icon" id="mymenu"></i>
  <a class="fa fa-plus-circle nav_menu pull-right barcode-menu page_header_icon"></a>
 </div>
-	
-<div style="margin-top: 15%;">	
+
+<div style="margin-top: 15%;">
 	<div class="col-lg-12 no_app" style="color: red;margin-top: 80px;font-size: 20px;display: none;">
 	No appointment available
 	</div>
-							
+
 	<div class="col-lg-12 day_1 appointment_days" style="margin-top: 35px;">
 		<div class="row">
 			<div class="ibox-title" style="background: #6f2a5c;color: #fff;font-size: 15px;">
@@ -227,12 +228,14 @@ font-weight: bold;
 			<div class="appoinement_details"></div>
 		</div>
 	</div>
-	
+
 </div>
 </div>
 </div>
+
 	
 <script src="../cordova.js" id="xdkJScordova_"></script>
+
 <script type="text/javascript" src="../js/jquery-1.12.3.js"></script>
 <script src="../js/app_1.js"></script>
 <script src="../js/swiper.min.js"></script>
@@ -243,65 +246,65 @@ font-weight: bold;
 <script type="text/javascript">
 
 function myappointmentDetails(){
-	
+
 	var client_id = getQueryParam('client_id');
 	var formData = new FormData();
-	
+
 	formData.append("user_id",client_id);
-	
+
 	var seven_days = [];
-	
+
 	for( var i = 0 ; i<7 ; i ++){
-		
+
 		var todaysDate = new Date();
 		todaysDate.setDate(todaysDate.getDate() + i );
-		
+
 	    var formatDate = todaysDate.getFullYear() + '-' + ( '0' + (todaysDate.getMonth() + 1)).slice(-2) + '-' + ( '0' + todaysDate.getDate() ).slice(-2) ;
-	    
+
 		seven_days.push( formatDate );
 	}
-	
+
     $.ajax({
   		url: 'http://www.dappoint.com/shopapp/php/my-appointment-app.php',
   		type: 'POST',
   		data: formData,
   		async: false,
   		success: function(data) {
-			
+
   			var finaldata = JSON.parse(data);
-  			
+
   			if( finaldata.OPERATION == 0){
-  				
+
   				var searchData = finaldata.SEARCH_RESULT;
-  				
+
   				var appointment_count = 0;
-  				
+
   				$.each( searchData , function( index, value ){
-  					
+
   					var confirmed_appointment_clone = $('.confirmed_appointment_clone').clone();
   					$( confirmed_appointment_clone ).removeClass('confirmed_appointment_clone');
-  					
+
   					var user_apnt_time = value.user_apnt_time;
-  					
+
   					var times = user_apnt_time.split(':');
-  					
+
   					$( confirmed_appointment_clone ).find('.appointment_time').html( times[0] + ':' + times[1] );
-  					
+
   					if( value.user_apnt_status == 'DELETED'){
   						confirmed_appointment_clone = $('.cancel_appointment_clone').clone();
   						$( confirmed_appointment_clone ).removeClass('cancel_appointment_clone');
-  						
+
   						var updated_date = value.update_date;
   						var up_times = updated_date.split(' ');
-  						
+
   						var time = up_times[1].split(':');
   						var date = up_times[0].split('-');
-  						
+
   						$( confirmed_appointment_clone ).find('.appointment_time').html( date[2] + '-' + date[1] + '-' + date[0] + ' ' +  time[0] + ':' + time[1]);
   					}
-  					
+
   					var relativeUrl = null;
-  					
+
   					if( ! jQuery.isEmptyObject( value.shop_img_url )){
   		                var start_index = value.shop_img_url.indexOf('upload');
   		                var end_index = value.shop_img_url.length;
@@ -311,12 +314,12 @@ function myappointmentDetails(){
 	                if( ! jQuery.isEmptyObject( relativeUrl ) ){
 	                	$( confirmed_appointment_clone ).find('.profile_img').attr("src" , "http://www.dappoint.com/shopapp/" + relativeUrl );
 	                }
-  					
+
   					$( confirmed_appointment_clone ).find('.shop_name').html( value.shop_name1 );
   					$( confirmed_appointment_clone ).find('.shop_desc').html( value.shop_desc );
   					$( confirmed_appointment_clone ).find('.doctor_name').html( value.first_line_activity);
   					$( confirmed_appointment_clone ).find('.appoinment').attr( 'appointment_id' , value.Appointment_ID );
-  					
+
   					if( value.user_apnt_status != 'DELETED'){
 
   						$( confirmed_appointment_clone ).find('.delete_app').attr('user_id' , value.user_id );
@@ -326,28 +329,28 @@ function myappointmentDetails(){
   						$( confirmed_appointment_clone ).find('.postpone_app').attr('user_id' , value.user_id );
   						$( confirmed_appointment_clone ).find('.postpone_app').attr('shop_id' , value.shop_id );
   						$( confirmed_appointment_clone ).find('.postpone_app').attr('appointment_id' , value.Appointment_ID );
-  	  					
+
   						$( confirmed_appointment_clone ).find('.confirm_app').attr('user_id' , value.user_id );
   	  					$( confirmed_appointment_clone ).find('.confirm_app').attr('shop_id' , value.shop_id );
   	  					$( confirmed_appointment_clone ).find('.confirm_app').attr('appointment_id' , value.Appointment_ID );
 
   					}
-  					
+
   					$( confirmed_appointment_clone ).removeClass('display_none');
-  					
+
   					var user_apnt_dt = value.user_apnt_dt;
-  					
+
   					var dayNo = getDayNo( seven_days , user_apnt_dt );
 
   					if( dayNo > 2 ){
   						$('.day_'+ dayNo ).find('.day_no').html( user_apnt_dt );
   					}
-  					
+
   					$('.day_'+ dayNo ).find('.appoinement_details').append( confirmed_appointment_clone );
-  					
+
   					appointment_count ++;
   	  			});
-  				
+
   				$('.appointment_count').html( appointment_count );
   			}
   },
@@ -355,36 +358,36 @@ function myappointmentDetails(){
   contentType: false,
   processData: false
 });
-    
+
 	var appointment_days = $('.appointment_days');
-    
+
     $.each( appointment_days , function(index , value ){
-			
+
     	var dataLength = $( value ).find('.appoinement_details').children().length;
-    	
+
     	if( dataLength == 0 ){
     		$( value ).remove();
     	}
     });
-    
+
     appointment_days = $('.appointment_days');
-    
+
     if( appointment_days.length == 0 ){
     	$('.no_app').show();
     }
 }
 
 function getDayNo( seven_days , user_apnt_dt  ){
-	
+
 	var dayNo = null;
-	
+
 	$.each( seven_days , function( i , v ){
-		
+
 		if( user_apnt_dt == v ){
 			dayNo = i + 1;
 		}
 	});
-	
+
 	return dayNo;
 }
 
@@ -395,17 +398,18 @@ $(document).ready(function(){
 		$('#postpone_window').show();
 	});
 	
+
 	loadAppointmentDetails();
-	
+
 	myappointmentDetails();
-	
+
 	$(this).on( 'click' , '.appoinment' , function(){
-		
+
 		var appointment_id = $(this).attr('appointment_id');
 		var user_id = getQueryParam('client_id');
 		document.location = 'appointment-details.html?appointment_id='+appointment_id+'&client_id='+user_id;
 	});
-	
+
 	var swiper = new Swiper('.swiper-container', {
         loop: true
     });
@@ -415,7 +419,7 @@ $(document).ready(function(){
 		var appointment_id = $(this).attr('appointment_id');
 		var user_id = $(this).attr('user_id');
 		var shop_id = $(this).attr('shop_id');
-		
+
 		var formData = new FormData();
 		formData.append("appointment_id",appointment_id);
 		formData.append("user_id" , user_id);
@@ -434,13 +438,13 @@ $(document).ready(function(){
 	  processData: false
 	});
 });
-	
+
 	$(this).on( 'click' , '.delete_app' , function(){
-		
+
 		var appointment_id = $(this).attr('appointment_id');
 		var user_id = $(this).attr('user_id');
 		var shop_id = $(this).attr('shop_id');
-		
+
 		var formData = new FormData();
 		formData.append("appointment_id",appointment_id);
 		formData.append("user_id" , user_id);
@@ -458,15 +462,15 @@ $(document).ready(function(){
 	  contentType: false,
 	  processData: false
 	});
-		
+
 	});
-	
+
 	$(this).on( 'click' , '.postpone_app' , function(){
-		
+
 		var appointment_id = $(this).attr('appointment_id');
 		var user_id = $(this).attr('user_id');
 		var shop_id = $(this).attr('shop_id');
-		
+
 		var formData = new FormData();
 		formData.append("appointment_id",appointment_id);
 		formData.append("user_id" , user_id);
@@ -486,13 +490,13 @@ $(document).ready(function(){
 	});
 
 	});
-	
+
 	$(this).on( 'click' , '.modal_confirm_app' , function(){
 
 		var appointment_id = $(this).attr('appointment_id');
 		var user_id = $(this).attr('user_id');
 		var shop_id = $(this).attr('shop_id');
-		
+
 		var formData = new FormData();
 		formData.append("appointment_id",appointment_id);
 		formData.append("user_id" , user_id);
@@ -511,13 +515,13 @@ $(document).ready(function(){
 	  processData: false
 	});
 });
-	
+
 	$(this).on( 'click' , '.modal_postpone_app' , function(){
-		
+
 		var appointment_id = $(this).attr('appointment_id');
 		var user_id = $(this).attr('user_id');
 		var shop_id = $(this).attr('shop_id');
-		
+
 		var formData = new FormData();
 		formData.append("appointment_id",appointment_id);
 		formData.append("user_id" , user_id);
@@ -541,17 +545,17 @@ $(document).ready(function(){
 });
 
 function loadAppointmentDetails(){
-	
+
 	var month = ['','January','February','March','April','May','June','July','August','September','October','November','December'];
-	
+
 	var appointment_id = getQueryParam('appointment_id');
-	
+
 	var formData = new FormData();
-	
+
 	if( appointment_id == null ){
 		return false;
 	}
-	
+
 	formData.append("appointment_id",appointment_id);
 
     $.ajax({
@@ -562,34 +566,34 @@ function loadAppointmentDetails(){
   		success: function(data) {
 
   			var finaldata = JSON.parse(data);
-  			
+
   			if( finaldata.OPERATION == 0){
 
   				var value = finaldata.SEARCH_RESULT;
-  				
+
   					var user_apnt_time = value.user_apnt_time;
 					var times = user_apnt_time.split(':');
-					
+
 					var date = value.user_apnt_dt;
-					
+
 					var date_split = date.split('-');
-					
+
   					$('.modal-date-time').html( date_split[2] + ' ' + month[ date_split[1] ] + ' ' + date_split[0] + ' - ' + times[0] + ':' + times[1]  );
   					$('.modal_shop_name').html( value.shop_name1 );
   					$('.modal_doc_name').html( value.first_line_activity );
   					$('.modal_shop_desc').html( value.shop_desc );
-  					
-  					
+
+
   					$('.modal_postpone_app').attr('user_id' , value.user_id );
   					$('.modal_postpone_app').attr('shop_id' , value.shop_id );
   					$('.modal_postpone_app').attr('appointment_id' , appointment_id );
-  					
+
   					$('.modal_confirm_app').attr('user_id' , value.user_id );
   					$('.modal_confirm_app').attr('shop_id' , value.shop_id );
   					$('.modal_confirm_app').attr('appointment_id' , appointment_id );
 
   					var relativeUrl = null;
-  					
+
   					if( ! jQuery.isEmptyObject( value.shop_img_url )){
   		                var start_index = value.shop_img_url.indexOf('upload');
   		                var end_index = value.shop_img_url.length;
@@ -607,7 +611,7 @@ function loadAppointmentDetails(){
 });
 
     $('#mymodal').trigger('click');
-    
+
 }
 
 </script>
@@ -619,25 +623,26 @@ function loadAppointmentDetails(){
          				<img alt="image" class="img-circle profile_img" src="../img/default.jpg" style="width: 70px;height: 70px;">
          			</a>
             	<div class="media-body ">
-            				
+
             				<span class="pull-right" style="margin-top: 25px;margin-right: 10px;">
-            				
+
 	                    	<span class="appointment_time" style="font-size: 12px;font-weight: bold;color: black;"></span>
 	                        <br>
 	                        <span class="label-red">CANCELLED</span>
 	                        </span>
-	                        
-	                        <span class="pull-left" style="margin-top: 20px;">
+
+	                        <span class="pull-left" style="margin-top: 12px;">
 	                        <span class="shop_name" style="font-size: 14px;color: #050505;font-weight: bold;"></span>
 							<br>
 	                        <small class="text-muted shop_desc"></small>
 	                        <br>
-							<span class="doctor_name" style="font-size: 13px;color: black;"></span>
+                          <br>
+							<span class="doctor_name" style="font-size: 14px;color: black;"></span>
 							</span>
             	</div>
            </div>
-         </div>                                                 
-    </div> 
+         </div>
+    </div>
 
 
 	<div class="swiper-container confirmed_appointment_clone display_none">
@@ -649,23 +654,24 @@ function loadAppointmentDetails(){
             				<img alt="image" class="img-circle profile_img" src="../img/default.jpg" style="width: 70px;height: 70px;">
             			</a>
 	                    <div class="media-body">
-	                    	
+
 	                    	<span class="pull-right" style="margin-top: 25px;margin-right: 10px;">
 	                    		<span class="appointment_time" style="margin-left: 15px;font-size: 12px;font-weight: bold;color: black;"></span>
 	                        	<br>
 	                        	<span class="label-green ">CONFIRMED</span>
 	                        </span>
-	                        
-	                        <span class="pull-left" style="margin-top: 20px;">
+
+	                        <span class="pull-left" style="margin-top: 12px;">
 	                        	<span class="shop_name" style="font-size: 14px;color: #050505;font-weight: bold;" ></span>
 								<br>
 	                        	<small class="text-muted shop_desc"></small>
 	                        	<br>
-								<span class="doctor_name" style="font-size: 13px;color: black;" ></span>
+                            <br>
+								<span class="doctor_name" style="font-size: 14px;color: black;" ></span>
 							</span>
 						</div>
                     </div>
-				</div>                                                 
+				</div>
             </div>
    			<div class="ibox-content swiper-slide swiper-slide-active">
 				<div class="feed-element" >
@@ -680,16 +686,16 @@ function loadAppointmentDetails(){
             				<img alt="image" class="img-circle profile_img" src="../img/default.jpg" style="width: 70px;height: 70px;">
             			</a>
             			</a>
-                        </div>													
-                    </div>   
-                 </div>                                                 
+                        </div>
+                    </div>
+                 </div>
               </div>
            </div>
-           </div>    
-           
+           </div>
+
 <div class="bs-example">
     <a href="#myModal" id="mymodal" class="btn btn-lg btn-primary ui-link" data-toggle="modal" style="display: none;"></a>
-    
+
     <!-- Modal HTML -->
     <div id="myModal" class="modal"  >
         <div class="modal-dialog">
@@ -709,7 +715,7 @@ function loadAppointmentDetails(){
             				<img alt="image" class="img-circle modal_profile_img" style="width: 70px;height: 70px;">
             			</a>
 	                    <div class="media-body">
-	                    	
+
 	                        <span class="pull-left" style="margin-top: 20px;">
 	                        	<span style="font-size: 14px;color: #050505;font-weight: bold;" class="modal_doc_name"></span>
 								<br>
@@ -719,7 +725,7 @@ function loadAppointmentDetails(){
 							</span>
 						</div>
                     </div>
-				</div>  
+				</div>
 				<div class="col-lg-12" style="background: #e5e5e5;">
 					<div class="row" style="background: #e5e5e5;">
 						<div class="ibox-content" style="border: none;background: #e5e5e5;">
@@ -757,13 +763,13 @@ function loadAppointmentDetails(){
 							</div>
 						</div>
 					</div>
-				</div>				                                               
+				</div>
             </div>
            </div>
             </div>
         </div>
     </div>
-</div>     
+</div>
 </body>
 
 </html>

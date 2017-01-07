@@ -3,7 +3,7 @@
             sURLVariables = sPageURL.split('&'),
             sParameterName,
             i;
-
+        alert("sPageurl :" + sPageURL);
         for (i = 0; i < sURLVariables.length; i++) {
             sParameterName = sURLVariables[i].split('=');
 
@@ -17,6 +17,13 @@
     function myappointment(){
     	
     	var client_id = getQueryParam('client_id');
+
+
+    	var my_profile_image = getQueryParam('my-profile-image');
+    	alert(my_profile_image);
+    	if( my_profile_image != null && my_profile_image != 'undefined'){
+    		$('.my-profile-image').attr('src' , 'https://graph.facebook.com/'+my_profile_image+'/picture' );
+    	}
 
     	var formData = new FormData();
     	formData.append("user_id",client_id);

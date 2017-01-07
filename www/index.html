@@ -10,7 +10,7 @@
     <meta name="author" content="">
 
     <title>Italian App</title>
-    
+
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/dataTables.bootstrap.min.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -23,6 +23,7 @@
     <script src="xdk/init-dev.js"></script>
     <script type="application/javascript" src="app_framework/3.0/appframework.ui.min.js"></script>
     <script type="application/javascript" src="js/index_user_scripts.js"></script>
+
     
     <script type="text/javascript" src="js/GooglePlus.js"></script>
     
@@ -30,6 +31,7 @@
     <!-- <script type="text/javascript" src="js/cordova.oauth2.js"></script> -->
     
     
+
 <style type="text/css">
 
 .inner_div{
@@ -54,8 +56,8 @@ text-align: center;
     float: none;
     margin: 0 auto;
 }
- html { 
-  background: url('img/app-login.jpg'); 
+ html {
+  background: url('img/app-login.jpg');
   background-size: cover;
 }
 
@@ -119,13 +121,13 @@ margin-left: 10px;
 <body>
 
     <div id="container" class="div_complete">
-    
+
    <div class="col-lg-12 inner_div" style="text-align: center;">
                     <div class="ibox float-e-margins">
 	                        <div class="ibox-content">
-	                        
+
 	                         <span class="success" style="colour:green"></span>
-	                        
+
                             <form class="form-horizontal" id="login">
                                 <p class="page-title col-lg-12" style="text-align: center;margin-bottom: 30px;">Log In</p>
                                 <div class="col-lg-12" style="top:-20px;text-align: center;">
@@ -135,9 +137,9 @@ margin-left: 10px;
 
 								<div class="col-lg-12" style="top:-20px;text-align: center;">
                                 <span class="img-circle" style="border: 2px solid #504c43;padding: 6px;color: wheat;">OR</span>
-                                </div>                                
+                                </div>
                                 <div class="col-lg-12">
-                                
+
                                     <div class="form-group" class="text-center">
 									    <div class="input-group" style="margin:auto;">
       										<input type="text" placeholder="User Name" name="username" class="form-control" style="width: 250px;border-radius:5px;">
@@ -152,30 +154,30 @@ margin-left: 10px;
   									</div>
                                 </div>
                                 <div class="col-lg-12">
-                                        <button type="button" class="btn btn-success"  onclick="clientLogin();" type="submit" style="width: 250px;">Sign in</a>
+                                        <button type="button" class="btn btn-success"  onclick="clientLogin();" type="submit" style="width: 250px;border: 2px solid;border-radius:10px">Sign in</a>
                                 </div>
                                 <div class="col-lg-12" style="margin-top:15px;">
                                         <span style="border-top:1px solid white;"><a href="pages/register.html" style="color:white;border-right: 1px solid white;">Create an account &nbsp;</a>
                                         &nbsp;&nbsp;&nbsp;<a href="pages/forgot-password.html" style="color:white;">Forgot password</a></span>
                                 </div>
-                                
+
                             </form>
                         </div>
                     </div>
                 </div>
-   
+
 	</div>
 	<script type="text/javascript">
-	
+
 	function onConfirmExit(button) {
-        
+
 	    if(button==2){
 	        return;
 	    }else{
 	        navigator.app.exitApp();
 	    }
 	}
-		
+
 	var getQueryParam = function getQueryParam(sParam) {
 	    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
 	        sURLVariables = sPageURL.split('&'),
@@ -190,27 +192,30 @@ margin-left: 10px;
 	        }
 	    }
 	};
-	
-	
+
+
 var pageMessage = getQueryParam('message');
 
 
 if(!jQuery.isEmptyObject(pageMessage))
-	
+
 	{
-	
+
 	$(".success").html(pageMessage);
-	
+
 	}
+
 	
 	function socialLogin( user_name , name, email , loginType , image_url){
 	
+
 	var formData = new FormData();
 	formData.append('username' , user_name );
 	formData.append('password' , '' );
 	formData.append('imageUrl' , image_url );
 	
 	
+
     	$.ajax({
   			url: 'http://www.dappoint.com/shopapp/php/login-client-app.php',
   			type: 'POST',
@@ -218,15 +223,17 @@ if(!jQuery.isEmptyObject(pageMessage))
   			async: false,
   			success: function(data) {
 	  			var finaldata = JSON.parse(data);
-	
+
 	  			if( finaldata.OPERATION == 0 ){
-	  				
+
 	  				updateDeviceDetails( finaldata.CLIENTID );
-	  				
+
 	  				var shop_connected = getShopConnected( finaldata.CLIENTID );
-	  				
+
 	  				if( shop_connected == 0 ){
+
 	  					document.location="pages/barCode.html?client_id="+finaldata.CLIENTID;	
+
 	  				}
 	  				else{
 	  					document.location="pages/my-appointment.html?client_id="+finaldata.CLIENTID;
@@ -241,31 +248,33 @@ if(!jQuery.isEmptyObject(pageMessage))
   			processData: false
 		});
 }
-	
+
 	function updateDeviceDetails(user_id){
-		
+
 		var formData = new FormData();
 		formData.append('user_id' , user_id);
 		formData.append('device_id' , device_id );
-		
+
 		$.ajax({
   			url: 'http://www.dappoint.com/shopapp/php/device_registration.php',
   			type: 'POST',
   			data: formData,
   			async: false,
   			success: function(data) {
-  				
+
   				console.log( data );
-  				
+
   			},
   			cache: false,
   			contentType: false,
   			processData: false
 		});
 	}
+
 	
 	function clientRegistration( user_name,name,email,loginType , image_url){
 		
+
 
 		var formData = new FormData();
 		
@@ -312,13 +321,14 @@ if(!jQuery.isEmptyObject(pageMessage))
 				processData : false
 			});
 		}
-	
-	
+
+
 	function clientLogin(){
-		
+
 		var formData = new FormData($("#login")[0]);
+
 		formData.append('imageUrl' , '../img/profile.png' );
-		
+
 	    	$.ajax({
 	  			url: 'http://www.dappoint.com/shopapp/php/login-client-app.php',
 	  			type: 'POST',
@@ -326,15 +336,14 @@ if(!jQuery.isEmptyObject(pageMessage))
 	  			async: false,
 	  			success: function(data) {
 		  			var finaldata = JSON.parse(data);
-					
 		  			if( finaldata.OPERATION == 0 ){
-		  				
+
 		  				updateDeviceDetails( finaldata.CLIENTID )
-		  				
+
 		  				var shop_connected = getShopConnected( finaldata.CLIENTID );
-		  				
+
 		  				if( shop_connected == 0 ){
-		  					document.location="pages/barCode.html?client_id="+finaldata.CLIENTID;	
+		  					document.location="pages/barCode.html?client_id="+finaldata.CLIENTID;
 		  				}
 		  				else{
 		  					document.location="pages/my-appointment.html?client_id="+finaldata.CLIENTID;
@@ -349,14 +358,14 @@ if(!jQuery.isEmptyObject(pageMessage))
 	  			processData: false
 			});
 	}
-	
+
 	function getShopConnected( user_id ){
-		
+
 		var shop_connected = 0;
-		
+
 		var formData = new FormData();
 	    formData.append( 'user_id' , user_id );
-	    
+
 	    $.ajax({
 	  		url: 'http://www.dappoint.com/shopapp/php/shop-connected-app.php',
 	  		type: 'POST',
@@ -365,13 +374,13 @@ if(!jQuery.isEmptyObject(pageMessage))
 	  		success: function(data) {
 
 	  			var finaldata = JSON.parse(data);
-	  			
+
 	  			if( finaldata.OPERATION == 0){
-	  				
+
 	  				var searchData = finaldata.SEARCH_RESULT;
-	  				
+
 	  				$.each( searchData , function( index, value ){
-	  					shop_connected ++;	  					
+	  					shop_connected ++;
 	  	  			});
 	  			}
 	  },
@@ -379,12 +388,14 @@ if(!jQuery.isEmptyObject(pageMessage))
 	  contentType: false,
 	  processData: false
 	});
-	    
+
 	    return shop_connected;
 	}
+
 	
 	app.initialize();
 	
+
 	function oauth2_login(){
 	   /*  $.oauth2({
 	        auth_url: 'https://accounts.google.com/o/oauth2/auth',
@@ -394,15 +405,18 @@ if(!jQuery.isEmptyObject(pageMessage))
 	        redirect_uri: 'http://www.example.com/oauth2callback',
 	        other_params: {scope: 'profile'}
 	    }, function(token, response){
-	        
+
 	    	var url='https://www.googleapis.com/plus/v1/people/me?access_token='+token+'&key='+'AIzaSyCv1mFzPS6dPszP3o0aOLLTPc4P1Csgv5g';
-	        
+
 	    	$.get(url,function(response){
+
 	    		alert(JSON.stringify( response ));
 	    		socialLogin( response.id , response.displayName, '' , 'G' , '../img/profile.png');
+
 	        })
-	        
+
 	    }, function(error, response){
+<<<<<<< 779f2f369ddeb067b5a46ee4b2b12d058ad73ba4
 	    }); */
 
 		 window.plugins.googleplus.login(
@@ -416,8 +430,9 @@ if(!jQuery.isEmptyObject(pageMessage))
 			          alert('error : ' + msg );
 			        }
 			    );
+
 	}
-	
+
 	</script>
 </body>
 
