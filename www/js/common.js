@@ -22,7 +22,7 @@
     	var my_profile_image = getQueryParam('my-profile-image');
     	alert(my_profile_image);
     	if( my_profile_image != null && my_profile_image != 'undefined'){
-    		$('.my-profile-image').attr('src' , 'https://graph.facebook.com/'+my_profile_image+'/picture' );
+    		$('.my-profile-image').attr('src' , 'https://graph.facebook.com/'+my_profile_image+'/picture?type=large' );
     	}
 
     	var formData = new FormData();
