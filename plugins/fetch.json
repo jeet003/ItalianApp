@@ -57,8 +57,6 @@
             "subdir": "."
         },
         "is_top_level": true,
-        "variables": {
-            "REVERSED_CLIENT_ID": "827360061072-4m6tc6cc6rf1gk0g10570ed38pp30f8o.apps.googleusercontent.com"
-        }
+        "variables": {}
     }
 }

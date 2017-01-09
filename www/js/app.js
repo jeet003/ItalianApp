@@ -38,7 +38,10 @@ document.addEventListener('deviceready', function () {
   window.plugins.OneSignal
     .startInit("702d060c-3c4c-4014-8911-22e9426c3944")
     .handleNotificationOpened(notificationOpenedCallback)
+.handleNotificationReceived(notificationOpenedCallback)
     .endInit();
+    
+    
     
     window.plugins.OneSignal.setSubscription(true);
     window.plugins.OneSignal.enableNotificationsWhenActive(false);

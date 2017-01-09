@@ -5,7 +5,7 @@
       "projectTypeName": "com.intel.xdk.projecttype.jsapp",
       "src": "",
       "projectGuid": "2644031d-eab6-4910-97ea-4a04cea4d9a7",
-      "lastModifiedDate": 1483181840157,
+      "lastModifiedDate": 1483984692759,
       "creationDate": 1481395236952
     },
     "gameAssetDirectory": "asset",
@@ -44,7 +44,7 @@
           "android-signed": true
         },
         "isActive_": true,
-        "certificateId_": "Ybtof55w5UKbpq8WUO2G0g2",
+        "certificateId_": "4JmYFqdhUEmn9d8qPZjCLw2",
         "appName_": "dappoint3",
         "appID_": "com.dappoint",
         "appAccess_": {

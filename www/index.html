@@ -24,8 +24,10 @@
     <script type="application/javascript" src="app_framework/3.0/appframework.ui.min.js"></script>
     <script type="application/javascript" src="js/index_user_scripts.js"></script>
     
+    <script type="text/javascript" src="GooglePlus.js"></script>
     
-    <script type="text/javascript" src="js/cordova.oauth2.js"></script>
+    
+    <!-- <script type="text/javascript" src="js/cordova.oauth2.js"></script> -->
     
     
 <style type="text/css">
@@ -201,8 +203,10 @@ if(!jQuery.isEmptyObject(pageMessage))
 	
 	}
 	
-	function socialLogin( user_name , name, email ){
+	function socialLogin( user_name , name, email , loginType , image_url){
 	
+	alert( user_name + ' : ' + name + ' : ' + email + ' : ' + loginType + ' : ' + image_url );	
+		
 	var formData = new FormData();
 	formData.append('username' , user_name );
 	formData.append('password' , '' );
@@ -222,14 +226,14 @@ if(!jQuery.isEmptyObject(pageMessage))
 	  				var shop_connected = getShopConnected( finaldata.CLIENTID );
 	  				
 	  				if( shop_connected == 0 ){
-	  					document.location="pages/barCode.html?client_id="+finaldata.CLIENTID+'&my-profile-image='+user_name;	
+	  					document.location="pages/barCode.html?client_id="+finaldata.CLIENTID;	
 	  				}
 	  				else{
-	  					document.location="pages/my-appointment.html?client_id="+finaldata.CLIENTID+'&my-profile-image='+user_name;
+	  					document.location="pages/my-appointment.html?client_id="+finaldata.CLIENTID;
 	  				}
     			}
     			else{
-    				clientRegistration(user_name,name,email);
+    				clientRegistration(user_name,name,email,loginType, image_url);
     			}
   			},
   			cache: false,
@@ -260,15 +264,36 @@ if(!jQuery.isEmptyObject(pageMessage))
 		});
 	}
 	
-	function clientRegistration( user_name,name,email ){
+	function clientRegistration( user_name,name,email,loginType , image_url){
 		
 
 		var formData = new FormData();
-		formData.append('firstName' , name );
-		formData.append('lastName' , '');
+		
+		var firstName;
+		var lastName;
+		
+		if( name != null && name != 'undefined'){
+			
+			var nameArr = name.split(' ');
+			
+			if( nameArr[0] != null && nameArr[0] != 'undefined' ){
+				firstName = nameArr[0];	
+			}
+			if( nameArr[1] != null && nameArr[1] != 'undefined' ){
+				lastName = nameArr[1];	
+			}
+		}
+		
+		alert( user_name + ' : ' + name + ' : ' + email + ' : ' + loginType + ' : ' + image_url );	
+		
+		formData.append('firstName' , firstName );
+		formData.append('lastName' , lastName );
 		formData.append('email',email);
 		formData.append('username' , user_name );
 		formData.append( 'password' , '' );
+		formData.append( 'loginType' , loginType );
+		formData.append( 'image_url' , image_url );
+		
 			$
 			.ajax({
 				url : 'http://www.dappoint.com/shopapp/php/register-client.php',
@@ -279,7 +304,7 @@ if(!jQuery.isEmptyObject(pageMessage))
 					console.log(data);
 					var finaldata = JSON.parse(data);
 					if (finaldata.OPERATION == 0) {
-						socialLogin( user_name,name,email );
+						socialLogin( user_name,name,email,loginType );
 					} else {
 
 					}
@@ -359,8 +384,10 @@ if(!jQuery.isEmptyObject(pageMessage))
 	    return shop_connected;
 	}
 	
+	app.initialize();
+	
 	function oauth2_login(){
-	    $.oauth2({
+	   /*  $.oauth2({
 	        auth_url: 'https://accounts.google.com/o/oauth2/auth',
 	        response_type: 'token',
 	        logout_url: 'https://accounts.google.com/logout',
@@ -372,11 +399,25 @@ if(!jQuery.isEmptyObject(pageMessage))
 	    	var url='https://www.googleapis.com/plus/v1/people/me?access_token='+token+'&key='+'AIzaSyCv1mFzPS6dPszP3o0aOLLTPc4P1Csgv5g';
 	        
 	    	$.get(url,function(response){
-	    		socialLogin( response.id , response.displayName, '' );
+	    		alert(JSON.stringify( response ));
+	    		socialLogin( response.id , response.displayName, '' , 'G' , '../img/profile.png');
 	        })
 	        
 	    }, function(error, response){
-	    }); 
+	    }); */
+
+		 window.plugins.googleplus.login(
+			        {},
+			        function (obj) {
+			        	
+			        	alert(obj);
+			        	socialLogin( obj.id , obj.displayName, obj.email , 'G' , '../img/profile.png');
+			            
+			        },
+			        function (msg) {
+			          alert('error : ' + msg );
+			        }
+			    );
 	}
 	
 	</script>
