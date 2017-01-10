@@ -28,7 +28,7 @@
             "PACKAGE_NAME": "io.cordova.hellocordova"
         },
         "cordova-plugin-googleplus": {
-            "REVERSED_CLIENT_ID": "827360061072-4m6tc6cc6rf1gk0g10570ed38pp30f8o.apps.googleusercontent.com",
+            "REVERSED_CLIENT_ID": "https://github.com/EddyVerbruggen/cordova-plugin-googleplus.git",
             "PACKAGE_NAME": "io.cordova.hellocordova"
         }
     },

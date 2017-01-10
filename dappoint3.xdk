@@ -5,7 +5,7 @@
       "projectTypeName": "com.intel.xdk.projecttype.jsapp",
       "src": "",
       "projectGuid": "2644031d-eab6-4910-97ea-4a04cea4d9a7",
-      "lastModifiedDate": 1483984692759,
+      "lastModifiedDate": 1484068658438,
       "creationDate": 1481395236952
     },
     "gameAssetDirectory": "asset",
@@ -338,7 +338,7 @@
         "gitref": "",
         "subdir": ".",
         "paramvals": {
-          "REVERSED_CLIENT_ID": "827360061072-4m6tc6cc6rf1gk0g10570ed38pp30f8o.apps.googleusercontent.com"
+          "REVERSED_CLIENT_ID": "https://github.com/EddyVerbruggen/cordova-plugin-googleplus.git"
         },
         "sourceLocation": "plugins/cordova-plugin-googleplus",
         "selectedState": "Included",

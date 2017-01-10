@@ -390,6 +390,11 @@ function getDayNo( seven_days , user_apnt_dt  ){
 
 $(document).ready(function(){
 	
+	$(this).on( 'click' , '.postpone_app_main' , function(){
+		$('#confirm_window').hide();
+		$('#postpone_window').show();
+	});
+	
 	loadAppointmentDetails();
 	
 	myappointmentDetails();
@@ -719,7 +724,8 @@ function loadAppointmentDetails(){
 					<div class="row" style="background: #e5e5e5;">
 						<div class="ibox-content" style="border: none;background: #e5e5e5;">
 							<div class="feed-element" style="padding: 10px;margin-left: 15px;">
-								<div class="media-body ">
+							
+								<div class="media-body " id="confirm_window">
 									<div class="pull-left" style="width: 50%;float: left;padding: 5px;">
 										<i class="fa fa-check-circle " style="color: green; font-size: 40px; padding: 10px;"></i>
 										<div style="clear: both;"></div>
@@ -729,10 +735,25 @@ function loadAppointmentDetails(){
 									<div class="pull-right" style="width: 50%;float: left;padding: 5px;">
 										<i class="fa fa-phone-square " style="color: red; font-size: 40px; padding: 10px;"></i>
 										<div style="clear: both;"></div>
-										<span style="color: red; font-weight: bold;" class="modal_postpone_app" >POSTPONE
+										<span style="color: red; font-weight: bold;" class="postpone_app_main" >POSTPONE
 										</span><span></span>
 									</div>
 								</div>
+								<div class="media-body " id="postpone_window" style="display: none;">
+									<div class="pull-right" style="width: 50%;float: left;padding: 5px;">
+										<i class="fa fa-phone-square " style="color: red; font-size: 40px; padding: 10px;"></i>
+										<div style="clear: both;"></div>
+										<span style="color: red; font-weight: bold;" class="modal_postpone_app" >POSTPONE CALL ME
+										</span><span></span>
+									</div>
+									<div class="pull-right" style="width: 50%;float: left;padding: 5px;">
+										<i class="fa fa-phone-square " style="color: red; font-size: 40px; padding: 10px;"></i>
+										<div style="clear: both;"></div>
+										<span style="color: red; font-weight: bold;" class="modal_postpone_app" >POSTPONE, I WILL CALL YOU LATER
+										</span><span></span>
+									</div>
+								</div>
+								
 							</div>
 						</div>
 					</div>

@@ -57,6 +57,8 @@
             "subdir": "."
         },
         "is_top_level": true,
-        "variables": {}
+        "variables": {
+            "REVERSED_CLIENT_ID": "https://github.com/EddyVerbruggen/cordova-plugin-googleplus.git"
+        }
     }
 }
