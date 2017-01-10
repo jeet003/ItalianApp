@@ -18,22 +18,15 @@
     	
     	var client_id = getQueryParam('client_id');
 
-    	var my_profile_image = getQueryParam('my-profile-image');
-    	
-    	if( my_profile_image != null && my_profile_image != 'undefined'){
-    		$('.my-profile-image').attr('src' , 'http://graph.facebook.com/'+my_profile_image+'/picture' );
-    	}
-
     	var formData = new FormData();
-    	
     	formData.append("user_id",client_id);
     	
-    	$('#my-appointment').attr('url' , 'my-appointment.html?client_id=' + client_id + '&my-profile-image=' + my_profile_image );
-    	$('#shop-connected').attr('url' , 'shop-connected.html?client_id=' + client_id + '&my-profile-image=' + my_profile_image );
-    	$('#barCode').attr('url' , 'barCode.html?client_id=' + client_id + '&my-profile-image=' + my_profile_image );
-    	$('#my-account').attr('url' , 'my-account.html?client_id=' + client_id + '&my-profile-image=' + my_profile_image );
-    	$('#back_button').attr('url' , 'my-appointment.html?client_id=' + client_id + '&my-profile-image=' + my_profile_image );
-    	$('.barcode-menu').attr('url' , 'barCode.html?client_id=' + client_id + '&my-profile-image=' + my_profile_image );
+    	$('#my-appointment').attr('url' , 'my-appointment.html?client_id=' + client_id);
+    	$('#shop-connected').attr('url' , 'shop-connected.html?client_id=' + client_id);
+    	$('#barCode').attr('url' , 'barCode.html?client_id=' + client_id);
+    	$('#my-account').attr('url' , 'my-account.html?client_id=' + client_id);
+    	$('#back_button').attr('url' , 'my-appointment.html?client_id=' + client_id);
+    	$('.barcode-menu').attr('url' , 'barCode.html?client_id=' + client_id);
 
         $.ajax({
       		url: 'http://www.dappoint.com/shopapp/php/my-appointment-app.php',
@@ -87,11 +80,14 @@
                     var qrcode = searchresult['qrcode'];
                     var phone = searchresult['mobile_no'];
                     var email = searchresult['email_id'];
+                    var profile_image = searchresult['profile_image'];
                     
                     $('.client_name').html( name + ' ' + lastname );
                     $('.client_email').html( email );
                     $('.client_phone').html( phone );
                     $('.qrcode').val( qrcode);
+                    
+                    $('.my-profile-image').attr('src' , profile_image );
                     
                     
               }

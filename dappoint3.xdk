@@ -5,7 +5,7 @@
       "projectTypeName": "com.intel.xdk.projecttype.jsapp",
       "src": "",
       "projectGuid": "2644031d-eab6-4910-97ea-4a04cea4d9a7",
-      "lastModifiedDate": 1482166362456,
+      "lastModifiedDate": 1484068658438,
       "creationDate": 1481395236952
     },
     "gameAssetDirectory": "asset",
@@ -44,7 +44,7 @@
           "android-signed": true
         },
         "isActive_": true,
-        "certificateId_": "Ybtof55w5UKbpq8WUO2G0g2",
+        "certificateId_": "4JmYFqdhUEmn9d8qPZjCLw2",
         "appName_": "dappoint3",
         "appID_": "com.dappoint",
         "appAccess_": {
@@ -328,6 +328,35 @@
         "description": "Cordova Device Plugin",
         "data": {},
         "dependedBy": []
+      },
+      {
+        "id": "cordova-plugin-googleplus",
+        "name": "Google SignIn",
+        "version": "5.1.1",
+        "originType": "repo",
+        "origin": "https://github.com/EddyVerbruggen/cordova-plugin-googleplus.git",
+        "gitref": "",
+        "subdir": ".",
+        "paramvals": {
+          "REVERSED_CLIENT_ID": "https://github.com/EddyVerbruggen/cordova-plugin-googleplus.git"
+        },
+        "sourceLocation": "plugins/cordova-plugin-googleplus",
+        "selectedState": "Included",
+        "checksum": "cb3f8a4c",
+        "dependsOn": [],
+        "topLevel": true,
+        "cordovaVersion": ">=3.5.0",
+        "author": "Eddy Verbruggen",
+        "permissions": {
+          "android:name": [
+            "android.permission.GET_ACCOUNTS",
+            "android.permission.USE_CREDENTIALS"
+          ]
+        },
+        "description": "Use your Google account to authenticate with the app.",
+        "data": {},
+        "dependedBy": [],
+        "custom": "true"
       }
     ],
     "sourceDirectory": "www",
