@@ -205,11 +205,11 @@ if(!jQuery.isEmptyObject(pageMessage))
 	
 	function socialLogin( user_name , name, email , loginType , image_url){
 	
-	alert( user_name + ' : ' + name + ' : ' + email + ' : ' + loginType + ' : ' + image_url );	
-		
 	var formData = new FormData();
 	formData.append('username' , user_name );
 	formData.append('password' , '' );
+	formData.append('imageUrl' , image_url );
+	
 	
     	$.ajax({
   			url: 'http://www.dappoint.com/shopapp/php/login-client-app.php',
@@ -284,8 +284,6 @@ if(!jQuery.isEmptyObject(pageMessage))
 			}
 		}
 		
-		alert( user_name + ' : ' + name + ' : ' + email + ' : ' + loginType + ' : ' + image_url );	
-		
 		formData.append('firstName' , firstName );
 		formData.append('lastName' , lastName );
 		formData.append('email',email);
@@ -319,6 +317,7 @@ if(!jQuery.isEmptyObject(pageMessage))
 	function clientLogin(){
 		
 		var formData = new FormData($("#login")[0]);
+		formData.append('imageUrl' , '../img/profile.png' );
 		
 	    	$.ajax({
 	  			url: 'http://www.dappoint.com/shopapp/php/login-client-app.php',
@@ -327,7 +326,7 @@ if(!jQuery.isEmptyObject(pageMessage))
 	  			async: false,
 	  			success: function(data) {
 		  			var finaldata = JSON.parse(data);
-		
+					
 		  			if( finaldata.OPERATION == 0 ){
 		  				
 		  				updateDeviceDetails( finaldata.CLIENTID )
@@ -410,7 +409,7 @@ if(!jQuery.isEmptyObject(pageMessage))
 			        {},
 			        function (obj) {
 			        	
-			        	socialLogin( obj.userId , obj.displayName, obj.email , 'G' , '../img/profile.png');
+			        	socialLogin( obj.userId , obj.displayName, obj.email , 'G' , obj.imageUrl);
 			            
 			        },
 			        function (msg) {

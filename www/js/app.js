@@ -29,7 +29,7 @@ document.addEventListener('deviceready', function () {
       
       var client_id = jsonData.notification.payload.additionalData.user_id ;
    
-      alert('app' + appointmentId );
+      //alert('app' + appointmentId );
       
       document.location = 'pages/my-appointment.html?client_id=' + client_id + '&appointment_id=' + appointmentId;          
       
@@ -38,7 +38,7 @@ document.addEventListener('deviceready', function () {
   window.plugins.OneSignal
     .startInit("702d060c-3c4c-4014-8911-22e9426c3944")
     .handleNotificationOpened(notificationOpenedCallback)
-.handleNotificationReceived(notificationOpenedCallback)
+    .handleNotificationReceived(notificationOpenedCallback)
     .endInit();
     
     
