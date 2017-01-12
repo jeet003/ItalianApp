@@ -5,7 +5,9 @@
       "projectTypeName": "com.intel.xdk.projecttype.jsapp",
       "src": "",
       "projectGuid": "2644031d-eab6-4910-97ea-4a04cea4d9a7",
-      "lastModifiedDate": 1484212871188,
+
+      "lastModifiedDate": 1484086225016,
+
       "creationDate": 1481395236952
     },
     "gameAssetDirectory": "asset",
@@ -255,6 +257,7 @@
         "checksum": "9a4a5206",
         "dependsOn": [],
         "topLevel": false,
+        "cordovaVersion": ">=3.1.0",
         "author": "Josh Kasten",
         "permissions": {},
         "description": "This addes required Android dependencies needed by OneSignal. Designed for Intel XDK to be used with onesignal-cordova-plugin-pgb-compat. Use onesignal-cordova-plugin instead if you not using Intel XDK.",
@@ -300,27 +303,6 @@
         "dependedBy": []
       },
       {
-        "id": "cordova-plugin-facebook4",
-        "name": "Facebook Connect",
-        "version": "1.7.4",
-        "originType": "cordova.io",
-        "origin": "cordova-plugin-facebook4",
-        "gitref": "",
-        "paramvals": {
-          "APP_ID": "1190601210994596",
-          "APP_NAME": "dappointtest"
-        },
-        "sourceLocation": "plugins/cordova-plugin-facebook4",
-        "selectedState": "Included",
-        "checksum": "bdc2021e",
-        "dependsOn": [],
-        "topLevel": true,
-        "permissions": {},
-        "description": "\n      This is the official plugin for Facebook in Apache Cordova/PhoneGap!\n\n      The Facebook plugin for Apache Cordova allows you to use the same JavaScript code in your\n      Cordova application as you use in your web application.\n      Docs: https://github.com/Wizcorp/phonegap-facebook-plugin.\n    ",
-        "data": {},
-        "dependedBy": []
-      },
-      {
         "id": "cordova-plugin-googleplus",
         "name": "Google SignIn",
         "version": "5.1.1",
@@ -348,6 +330,28 @@
         "data": {},
         "dependedBy": [],
         "custom": "true"
+
+      },
+      {
+        "id": "cordova-plugin-facebook4",
+        "name": "Facebook Connect",
+        "version": "1.7.4",
+        "originType": "cordova.io",
+        "origin": "cordova-plugin-facebook4",
+        "gitref": "",
+        "paramvals": {
+          "APP_ID": "1190601210994596",
+          "APP_NAME": "dappointtest"
+        },
+        "sourceLocation": "plugins/cordova-plugin-facebook4",
+        "selectedState": "Included",
+        "checksum": "bdc2021e",
+        "dependsOn": [],
+        "topLevel": true,
+        "permissions": {},
+        "description": "\n      This is the official plugin for Facebook in Apache Cordova/PhoneGap!\n\n      The Facebook plugin for Apache Cordova allows you to use the same JavaScript code in your\n      Cordova application as you use in your web application.\n      Docs: https://github.com/Wizcorp/phonegap-facebook-plugin.\n    ",
+        "data": {},
+        "dependedBy": []
       }
     ],
     "sourceDirectory": "www",

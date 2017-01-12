@@ -4,7 +4,7 @@
 <!--To change the contents of this file, see the documentation on the intelxdk.config.additions.xml file.-->
 <intelxdk:version value="1.1"/>
 <intelxdk:cordova-cli version="6.2.0"/>
-<name>dappoint3</name>
+<name>dappoint</name>
 <content src="index.html"/>
 <access origin="*"/>
 <intelxdk:plugin intelxdk:name="InAppBrowser" intelxdk:value="cordova-plugin-inappbrowser" intelxdk:version="1.4.0" intelxdk:checksum="f88bc51f" intelxdk:type="file"/>
@@ -12,6 +12,8 @@
 <intelxdk:plugin intelxdk:name="OneSignal Android Dependencies" intelxdk:value="onesignal-cordova-dependencies-compat" intelxdk:version="1.0.0" intelxdk:checksum="9a4a5206" intelxdk:type="file"/>
 <intelxdk:plugin intelxdk:name="Notification" intelxdk:value="cordova-plugin-dialogs" intelxdk:version="1.2.1" intelxdk:checksum="2948bc11" intelxdk:type="file"/>
 <intelxdk:plugin intelxdk:name="Device" intelxdk:value="cordova-plugin-device" intelxdk:version="1.1.2" intelxdk:checksum="2373ccea" intelxdk:type="file"/>
+<intelxdk:plugin intelxdk:name="Google SignIn" intelxdk:value="cordova-plugin-googleplus" intelxdk:version="5.1.1" intelxdk:checksum="cb3f8a4c" intelxdk:type="file">
+<intelxdk:param intelxdk:name="REVERSED_CLIENT_ID" intelxdk:value="com.googleusercontent.apps.87974589668-19vrrg3j8nra94ntkrijui7pheli9a08"/></intelxdk:plugin>
 <intelxdk:plugin intelxdk:name="Facebook Connect" intelxdk:value="cordova-plugin-facebook4" intelxdk:version="1.7.4" intelxdk:checksum="bdc2021e" intelxdk:type="file">
 <intelxdk:param intelxdk:name="APP_ID" intelxdk:value="1190601210994596"/>
 <intelxdk:param intelxdk:name="APP_NAME" intelxdk:value="dappointtest"/></intelxdk:plugin>

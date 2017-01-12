@@ -83,7 +83,6 @@ module.exports = function (context) {
             config.buildSettings.CODE_SIGN_ENTITLEMENTS = '"' + projName + '/Resources/' + projName + '.entitlements"';
           }
         }
-
         // write the updated project file
         fs.writeFileSync(projectPath, pbxProject.writeSync());
         console.log("END Running hook to add iOS Keychain Sharing entitlements (required since iOS 10)");

@@ -19,13 +19,15 @@
         "cordova-plugin-device": {
             "PACKAGE_NAME": "io.cordova.hellocordova"
         },
+
+        "cordova-plugin-googleplus": {
+            "REVERSED_CLIENT_ID": "com.googleusercontent.apps.87974589668-19vrrg3j8nra94ntkrijui7pheli9a08",
+            "PACKAGE_NAME": "io.cordova.hellocordova"
+        },
         "cordova-plugin-facebook4": {
             "APP_ID": "1190601210994596",
             "APP_NAME": "dappointtest",
-            "PACKAGE_NAME": "io.cordova.hellocordova"
-        },
-        "cordova-plugin-googleplus": {
-            "REVERSED_CLIENT_ID": "com.googleusercontent.apps.87974589668-19vrrg3j8nra94ntkrijui7pheli9a08",
+
             "PACKAGE_NAME": "io.cordova.hellocordova"
         }
     },

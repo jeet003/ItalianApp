@@ -7,17 +7,7 @@
         "is_top_level": true,
         "variables": {}
     },
-    "cordova-plugin-facebook4": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-facebook4@1.7.4"
-        },
-        "is_top_level": true,
-        "variables": {
-            "APP_ID": "1190601210994596",
-            "APP_NAME": "dappointtest"
-        }
-    },
+
     "cordova-plugin-googleplus": {
         "source": {
             "type": "git",
@@ -27,6 +17,19 @@
         "is_top_level": true,
         "variables": {
             "REVERSED_CLIENT_ID": "com.googleusercontent.apps.87974589668-19vrrg3j8nra94ntkrijui7pheli9a08"
+
+        }
+    },
+    "cordova-plugin-facebook4": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-facebook4@1.7.4"
+        },
+        "is_top_level": true,
+        "variables": {
+            "APP_ID": "1190601210994596",
+            "APP_NAME": "dappointtest"
+
         }
     }
 }
