@@ -3,7 +3,7 @@
             sURLVariables = sPageURL.split('&'),
             sParameterName,
             i;
-        alert("sPageurl :" + sPageURL);
+        //alert("sPageurl :" + sPageURL);
         for (i = 0; i < sURLVariables.length; i++) {
             sParameterName = sURLVariables[i].split('=');
 
@@ -20,7 +20,7 @@
 
 
     	var my_profile_image = getQueryParam('my-profile-image');
-    	alert(my_profile_image);
+    	//alert(my_profile_image);
     	if( my_profile_image != null && my_profile_image != 'undefined'){
     		$('.my-profile-image').attr('src' , 'https://graph.facebook.com/'+my_profile_image+'/picture?type=large' );
     	}

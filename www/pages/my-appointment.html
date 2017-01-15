@@ -620,7 +620,7 @@ function loadAppointmentDetails(){
     	<div class="feed-element" >
 			<div class="appoinment-details " >
     				<a class="pull-left" style="margin-top: 10px;padding: 5px;">
-         				<img alt="image" class="img-circle profile_img" src="../img/default.jpg" style="width: 70px;height: 70px;">
+         				<img alt="image" class="img-circle profile_img" src="../img/default.jpg" style="width: 65px;height: 65px;">
          			</a>
             	<div class="media-body ">
 
@@ -651,7 +651,7 @@ function loadAppointmentDetails(){
         		<div class="feed-element appoinment" >
 					<div class="appoinment-details " >
         				<a class="pull-left" style="margin-top: 10px;padding: 5px;">
-            				<img alt="image" class="img-circle profile_img" src="../img/default.jpg" style="width: 70px;height: 70px;">
+            				<img alt="image" class="img-circle profile_img" src="../img/default.jpg" style="width: 65px;height: 65px;">
             			</a>
 	                    <div class="media-body">
 
@@ -677,13 +677,13 @@ function loadAppointmentDetails(){
 				<div class="feed-element" >
 					<div class="media-body appoinment-options swiper-slide" >
 						<div style="width: 60%;float: left;margin-top: 15px;">
-							<i class="fa fa-check-circle confirm_app" style="color: green;font-size: 45px !important;padding: 10px;"></i>
-							<i class="fa fa-phone-square postpone_app" style="color: red;font-size: 45px !important;padding: 10px;"></i>
-							<i class="fa fa-phone-square delete_app" style="color: red;font-size: 45px !important;padding: 10px;"></i>
+							<i class="confirm_app"><img src="../img/g4290.png" style="width: 65px; padding: 10px;"  > </i>
+							<i class="postpone_app"> <img src="../img/g4342.png" style="width: 65px !important;padding: 10px;"></i>
+							<i class="delete_app"><img src="../img/g4350.png" style="width:65px !important;padding: 10px;"></i>
 						</div>
 						<div style="width: 36%;float: right;">
                         	<a class="pull-left" style="margin-top: 10px;padding: 5px;">
-            				<img alt="image" class="img-circle profile_img" src="../img/default.jpg" style="width: 70px;height: 70px;">
+            				<img alt="image" class="img-circle profile_img" src="../img/default.jpg" style="width: 65px;height: 65px;">
             			</a>
             			</a>
                         </div>
@@ -698,21 +698,21 @@ function loadAppointmentDetails(){
 
     <!-- Modal HTML -->
     <div id="myModal" class="modal"  >
-        <div class="modal-dialog">
-            <div class="modal-content" style="background: #e5e5e5;">
+        <div class="modal-dialog" >
+            <div class="modal-content" style="background: #e5e5e5;position:absolute;top:10%;left:7%;right:7%;bottom:10%;">
                 <div class="modal-header" style="border: none;">
                     <button type="button" class="close ui-btn ui-shadow ui-corner-all" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>
                 <div class="modal-body">
                 	<div class="col-lg-12" style="background: #71215a;padding: 15px;">
-                    	<p style="font-size: 20px;font-weight: bold;color: white;text-align: center;" class="modal_shop_name"></p>
-                    	<p style="font-size: 15px;font-weight: bold;color: white;text-align: center;" class="modal-date-time"></p>
+                    	<p style="font-size: 17px;font-weight: bold;color: white;text-align: center;" class="modal_shop_name"></p>
+                    	<p style="font-size: 12px;font-weight: bold;color: white;text-align: center;" class="modal-date-time"></p>
                     </div>
         	<div class="ibox-content swiper-slide" style="background: #e5e5e5;">
         		<div class="feed-element appoinment">
 					<div class="appoinment-details ">
         				<a class="pull-left ui-link" style="margin-top: 10px;padding: 5px;">
-            				<img alt="image" class="img-circle modal_profile_img" style="width: 70px;height: 70px;">
+            				<img alt="image" class="img-circle modal_profile_img" style="width: 65px;height: 65px;">
             			</a>
 	                    <div class="media-body">
 
@@ -732,28 +732,27 @@ function loadAppointmentDetails(){
 							<div class="feed-element" style="padding: 10px;margin-left: 15px;">
 							
 								<div class="media-body " id="confirm_window">
-									<div class="pull-left" style="width: 50%;float: left;padding: 5px;">
-										<i class="fa fa-check-circle " style="color: green; font-size: 40px; padding: 10px;"></i>
+									<div class="pull-left" style="width: 50%;float: left;padding: 10px;">
+										<i class="check-circle"><img src="../img/g4290.png" style="width: 65px; padding: 10px;"  > </i>
 										<div style="clear: both;"></div>
-										<span style="color: green; font-weight: bold;" class="modal_confirm_app">I
-											CONFIRM</span><span></span>
+										<span style="color: green; font-weight: bold;" class="modal_confirm_app">CONFIRM</span><span></span>
 									</div>
-									<div class="pull-right" style="width: 50%;float: left;padding: 5px;">
-										<i class="fa fa-phone-square " style="color: red; font-size: 40px; padding: 10px;"></i>
+									<div class="pull-right" style="width: 50%;float: left;padding: 10px;">
+										<i class="phone-square "><img src="../img/g4278.png" style="width: 65px; padding: 10px;"  > </i>
 										<div style="clear: both;"></div>
 										<span style="color: red; font-weight: bold;" class="postpone_app_main" >POSTPONE
 										</span><span></span>
 									</div>
 								</div>
 								<div class="media-body " id="postpone_window" style="display: none;">
-									<div class="pull-right" style="width: 50%;float: left;padding: 5px;">
-										<i class="fa fa-phone-square " style="color: red; font-size: 40px; padding: 10px;"></i>
+									<div class="pull-right" style="width: 50%;float: left;padding: 10px;">
+										<i class="phone-square"> <img src="../img/g4342.png" style="width: 65px !important;padding: 10px;"></i>
 										<div style="clear: both;"></div>
 										<span style="color: red; font-weight: bold;" class="modal_postpone_app" >POSTPONE CALL ME
 										</span><span></span>
 									</div>
-									<div class="pull-right" style="width: 50%;float: left;padding: 5px;">
-										<i class="fa fa-phone-square " style="color: red; font-size: 40px; padding: 10px;"></i>
+									<div class="pull-right" style="width: 50%;float: left;padding: 10px;">
+										<i class="phone-square "> <img src="../img/g4350.png" style="width: 65px !important;padding: 10px;"></i>
 										<div style="clear: both;"></div>
 										<span style="color: red; font-weight: bold;" class="modal_postpone_app" >POSTPONE, I WILL CALL YOU LATER
 										</span><span></span>
